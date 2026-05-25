@@ -88,3 +88,24 @@ Wenn Branch-Erstellung technisch nicht möglich: transparent informieren, nicht 
 - `references/question-rules.md`
 - `references/branch-rules.md`
 - `references/stop-rules.md`
+
+## README-Regel (wichtig)
+
+- Codex soll **README-Dateien nicht automatisch lesen oder auswerten**.
+- Ausnahme: README darf nur genutzt werden für:
+  1. **Installation genau dieses Tools/Skills**
+  2. **Update dieses Tools/Skills**
+- Für alle anderen Aufgaben sind stattdessen Ticket-, Story- und Referenzdateien dieses Skills maßgeblich.
+
+## Update-Regel
+
+Wenn der Nutzer ein Update möchte, sind folgende Wege erlaubt:
+
+1. **Direkt per Git aktualisieren**
+   - Standardbefehl:
+     - `git pull`
+   - Optional danach kurz bestätigen, was aktualisiert wurde (z. B. neuer Commit-Stand).
+
+2. **Codex um Update bitten (standardisierter Prompt)**
+   - Verwende dafür diesen Prompt:
+   - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`

@@ -1,0 +1,8 @@
+# Local personal workflow preferences (must not be committed in target projects)
+.codex-ticket-workflow.local.json
+
+# Common local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

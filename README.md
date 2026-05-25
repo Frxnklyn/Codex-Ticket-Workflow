@@ -35,6 +35,30 @@ Die folgenden Regeln sind ausschließlich auf diesen Skill `ticket-workflow` bez
    - Standardisierter Codex-Prompt:
      - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`
 
+## Update (für Nutzer)
+
+### Option A: Manuell aktualisieren
+
+```bash
+git pull
+```
+
+### Option B: Codex mit Standardprompt aktualisieren lassen
+
+Nutze diesen Prompt:
+
+```text
+Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand.
+Führe dafür git pull im Repository aus, prüfe auf Konflikte/Fehler
+und gib mir danach eine kurze Zusammenfassung der Änderungen.
+```
+
+Zusätzlich liegt ein fertiger Prompt hier:
+- `examples/codex-update-prompt.md`
+
+Optional gibt es ein kleines Script für den Update-Flow:
+- `node scripts/update-skill.mjs`
+
 ## Repository-Struktur
 
 ```text

@@ -20,6 +20,21 @@ git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/t
 5. Die `README.md` ist nur Doku und **nicht** die operative Skill-Regeldatei.
 6. Die operative Logik liegt in `SKILL.md` sowie in `references/`.
 
+## Wichtige Regeln für **diesen** Skill
+
+Die folgenden Regeln sind ausschließlich auf diesen Skill `ticket-workflow` bezogen:
+
+1. **README-Nutzung durch Codex**
+   - Codex soll `README.md` nicht automatisch lesen/auswerten.
+   - Ausnahme nur für:
+     - Installation dieses Skills
+     - Update dieses Skills
+2. **Update-Regeln**
+   - Direkter Weg:
+     - `git pull`
+   - Standardisierter Codex-Prompt:
+     - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`
+
 ## Repository-Struktur
 
 ```text

@@ -91,6 +91,7 @@ Wenn Branch-Erstellung technisch nicht möglich: transparent informieren, nicht 
 
 ## README-Regel (wichtig)
 
+- Diese Regel gilt **ausschließlich für diesen Skill** (`ticket-workflow`) und **nicht** automatisch für andere Skills.
 - Codex soll **README-Dateien nicht automatisch lesen oder auswerten**.
 - Ausnahme: README darf nur genutzt werden für:
   1. **Installation genau dieses Tools/Skills**
@@ -109,3 +110,5 @@ Wenn der Nutzer ein Update möchte, sind folgende Wege erlaubt:
 2. **Codex um Update bitten (standardisierter Prompt)**
    - Verwende dafür diesen Prompt:
    - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`
+
+Hinweis: Auch diese Update-Regel gilt nur für diesen Skill (`ticket-workflow`).

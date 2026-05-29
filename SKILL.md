@@ -1,114 +1,119 @@
 # ticket-workflow Skill
 
+## Zweck
+
+Wiederverwendbares Codex-Regelwerk für einen einfachen Story-/Ticket-Workflow auf Markdown-Basis.
+
+Die verbindliche Zielstruktur im Zielprojekt steht zentral in `references/target-structure.md`. Diese Datei ist die maßgebliche Quelle für Ordner- und Dateistruktur; hier im Skill werden nur die operativen Regeln ergänzt.
+
 ## Wann dieser Skill verwendet werden soll
 
 Verwenden, wenn der Nutzer z. B. sagt:
 - Ticket, Story, Backlog
-- Acceptance Criteria, Done Notes
+- Acceptance Criteria, Arbeitsnotizen, Statusbericht
 - Story in Tickets zerlegen
 - einzelnes Ticket bearbeiten
 - ganze Story abarbeiten
-- Tickets nacheinander bearbeiten
 
-## Wann nicht
+## Kernmodell
 
-Nicht verwenden für:
-- kurze allgemeine Codefragen
-- allgemeine Erklärungen ohne Ticketbezug
-- einfache Refactorings ohne Ticketkontext
-- Architekturfragen ohne Ticket-/Storybezug
+- Story und Ticket sind strukturell ähnlich (Markdown + YAML-Frontmatter).
+- Story = übergeordneter Arbeitscontainer.
+- Ticket = einzelne konkret umsetzbare Aufgabe.
+- Story gilt erst als abgeschlossen, wenn relevante Tickets `done` oder `discarded` sind.
 
-## Kernregeln
+## Verbindliche Statuswerte
 
-1. Erst Datei lesen (Ticket/Story), dann handeln.
-2. Depends on / Required before start strikt prüfen.
-3. Bei Blockern: nachfragen, nicht still weitermachen.
-4. Scope/Out-of-scope respektieren.
-5. Acceptance Criteria vor Abschluss prüfen.
-6. Done Notes ergänzen.
-7. Nicht automatisch mehrere Tickets durchlaufen; im Zweifel stoppen.
+- `backlog`
+- `ready`
+- `in_progress`
+- `blocked`
+- `done`
+- `discarded`
 
-## Story-Modus
+Status wird immer im Frontmatter gepflegt (nicht über Status-Ordner).
 
-Wenn "Bearbeite diese Story":
-1. Story lesen.
-2. Child-Tickets sammeln.
-3. Reihenfolge prüfen.
-4. Beim ersten offenen Ticket starten.
-5. Vor Start Branch-Frage (außer Präferenz gesetzt).
-6. Nach Ticket AC prüfen.
-7. Done Notes ergänzen.
-8. Nach done verschieben oder Empfehlung geben.
-9. Vor nächstem Ticket stoppen/fragen (Präferenz beachten).
-10. Niemals spätere Tickets bearbeiten, wenn required Vorgänger offen sind.
+## Tools-Feld
 
-## Ticket-Modus
+Jede Story und jedes Ticket enthält:
 
-Wenn "Bearbeite dieses Ticket":
-1. Ticket lesen.
-2. Parent Story lesen (falls angegeben).
-3. Dependencies prüfen.
-4. Fehlen Voraussetzungen: nachfragen.
-5. Vor Start Branch-Frage (außer Präferenz).
-6. Nur Ticket-Scope umsetzen.
-7. AC prüfen.
-8. Done Notes ergänzen.
-9. Vor nächstem Ticket stoppen/fragen.
+```yaml
+tools: []
+```
 
-## Fragesystem (genau vier Optionen)
+Bearbeitungsregel:
+1. `tools` in Story/Ticket prüfen.
+2. Falls Einträge vorhanden sind: passende Tool-Regeln suchen und anwenden.
+3. Bei leerem `tools` gelten allgemeine Regeln + optionale `RULE.md`.
 
-1. Ja
-2. Nein
-3. Ja, nicht mehr fragen
-4. Nein, nicht mehr fragen
+## RULE.md-Kaskade
 
-Persistenz:
-- "Ja, nicht mehr fragen" => `true`
-- "Nein, nicht mehr fragen" => `false`
-- "Ja"/"Nein" => keine dauerhafte Speicherung
+`RULE.md` ist optional und kann auf mehreren Ebenen liegen.
 
-## Branch-Regeln
+Beim Bearbeiten eines Tickets gilt (allgemein -> spezifisch):
+1. `.project-work/RULE.md`
+2. `.project-work/storys/RULE.md`
+3. `.project-work/storys/<story>/RULE.md`
+4. `.project-work/storys/<story>/tickets/RULE.md`
 
-Vor Story-/Ticket-Start prüfen:
-- `alwaysCreateBranch === true` => Branch nutzen
-- `alwaysCreateBranch === false` => kein Branch
-- `null` => fragen
+Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
-Namensformat:
-- `ticket/TICKET-001-short-title`
-- `story/STORY-001-short-title`
+## Arbeitsablauf Ticket-Bearbeitung
 
-Wenn Branch-Erstellung technisch nicht möglich: transparent informieren, nicht stillschweigend fortfahren.
+1. Story öffnen.
+2. Relevante `RULE.md` lesen.
+3. `tools` aus Story und Ticket prüfen.
+4. Ticket (Aufgabe/Anforderungen/Nicht-Ziele/AC) lesen.
+5. Nur Ticket-Scope bearbeiten.
+6. Ticket aktualisieren (`status`, `updated`, AC, Arbeitsnotizen).
+7. `STATUS.md` aktualisieren.
+8. Ticketübersicht in `STORY.story.md` aktualisieren.
+
+## Story anlegen
+
+- Zielpfad und Pflichtdateien gemäß `references/target-structure.md`.
+- Namensdetails gemäß `references/story-rules.md`.
+- Templates: `templates/`.
+
+## Ticket anlegen
+
+- Speicherort: `<story>/tickets/`
+- Name: `001-kurzer-ticket-name.ticket.md`
+- Nach Anlage Story-Ticketübersicht sofort aktualisieren.
+
+## Archivierung
+
+- Aktive und archivierte Story-Orte gemäß `references/target-structure.md`.
+- Nur wenn Story-Status `done` oder `discarded`.
+- Immer komplette Story verschieben.
+
+## Bestehende Spezialregeln erhalten
+
+- Bestehende, kompatible Spezialregeln bleiben bestehen.
+- Speziellere bestehende Regeln haben Vorrang vor allgemeinen Standardregeln.
+- Bei Konflikten nur minimal-invasive Anpassung.
 
 ## Referenzen
 
+- `references/target-structure.md`
 - `references/workflow-rules.md`
 - `references/story-rules.md`
 - `references/ticket-rules.md`
-- `references/question-rules.md`
 - `references/branch-rules.md`
+- `references/question-rules.md`
 - `references/stop-rules.md`
+- `references/story-template.md`
+- `references/ticket-template.md`
 
-## README-Regel (wichtig)
 
-- Diese Regel gilt **ausschließlich für diesen Skill** (`ticket-workflow`) und **nicht** automatisch für andere Skills.
-- Codex soll **README-Dateien nicht automatisch lesen oder auswerten**.
-- Ausnahme: README darf nur genutzt werden für:
-  1. **Installation genau dieses Tools/Skills**
-  2. **Update dieses Tools/Skills**
-- Für alle anderen Aufgaben sind stattdessen Ticket-, Story- und Referenzdateien dieses Skills maßgeblich.
+## Init.md-Regel
 
-## Update-Regel
+- `Init.md` ist nur für die einmalige Initialisierung nach Installation dieses Skills relevant und kann mehrere Initialisierungspunkte enthalten.
+- Im normalen Story-/Ticket-Workflow ist `Init.md` irrelevant.
+- Codex soll `Init.md` nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an; dann sind die Punkte von oben nach unten abzuarbeiten und `ignore:`-Angaben im Nutzerprompt zu beachten.
 
-Wenn der Nutzer ein Update möchte, sind folgende Wege erlaubt:
+## README-Regel (bestehend, beibehalten)
 
-1. **Direkt per Git aktualisieren**
-   - Standardbefehl:
-     - `git pull`
-   - Optional danach kurz bestätigen, was aktualisiert wurde (z. B. neuer Commit-Stand).
-
-2. **Codex um Update bitten (standardisierter Prompt)**
-   - Verwende dafür diesen Prompt:
-   - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`
-
-Hinweis: Auch diese Update-Regel gilt nur für diesen Skill (`ticket-workflow`).
+- Diese Regel gilt ausschließlich für diesen Skill (`ticket-workflow`).
+- Codex soll README-Dateien nicht automatisch lesen/auswerten.
+- Ausnahme nur für Installation/Update dieses Skills.

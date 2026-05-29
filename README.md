@@ -1,73 +1,79 @@
 # Codex Ticket Workflow
 
-Dieses Repository ist **selbst ein Codex Skill**.
+Dieses Repository ist ein wiederverwendbares **Codex-Regelwerk (Skill)** für einen einfachen Story-/Ticket-Workflow.
+
+## Kernziel
+
+Ein einheitliches, schnell beschreibbares Arbeitsmodell, das Codex zuverlässig lesen und bearbeiten kann. Die verbindliche Zielstruktur steht zentral in `references/target-structure.md`; andere Dokumente verweisen darauf, statt die Struktur zu duplizieren.
 
 ## Installation
-
-Klonen Sie dieses Repository direkt in Ihr Zielprojekt unter `.agents/skills/ticket-workflow/`.
 
 ```bash
 mkdir -p .agents/skills
 git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
 ```
 
-## Wichtige Hinweise
+### Installationsprompt für Codex
 
-1. Dieses Repo ist der Skill selbst (kein zusätzlicher Wrapper-Ordner).
-2. Es ist **kein npm package**.
-3. Es braucht **keine extra Installation**.
-4. Der Skill wird über `SKILL.md` erkannt.
-5. Die `README.md` ist nur Doku und **nicht** die operative Skill-Regeldatei.
-6. Die operative Logik liegt in `SKILL.md` sowie in `references/`.
+```text
+Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git in dieses aktuelle Projekt.
 
-## Wichtige Regeln für **diesen** Skill
+Nutze `.agents/skills/ticket-workflow/` als Zielordner.
+Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
+Überschreibe keine vorhandenen Dateien ungefragt.
+Optional kannst du einzelne Initialisierungspunkte ignorieren, indem du sie nach `ignore:` nennst. Beispiel: `ignore: Beispielstory anlegen, BeispielTicket anlegen`
+Gib am Ende eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
+```
 
-Die folgenden Regeln sind ausschließlich auf diesen Skill `ticket-workflow` bezogen:
 
-1. **README-Nutzung durch Codex**
-   - Codex soll `README.md` nicht automatisch lesen/auswerten.
-   - Ausnahme nur für:
-     - Installation dieses Skills
-     - Update dieses Skills
-2. **Update-Regeln**
-   - Direkter Weg:
-     - `git pull`
-   - Standardisierter Codex-Prompt:
-     - `Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand (git pull), prüfe auf Konflikte und gib mir danach eine kurze Zusammenfassung der Änderungen.`
+### Init-Punkte ignorieren
 
-## Update (für Nutzer)
+`Init.md` kann mehrere Initialisierungspunkte enthalten. Codex soll einen Punkt ignorieren, wenn der Installations- oder Re-Initialisierungsprompt nach `ignore:` die Nummer, Überschrift oder den Kurznamen des Punkts nennt.
 
-### Option A: Manuell aktualisieren
+Beispiel:
+
+```text
+ignore: Beispielstory anlegen, BeispielTicket anlegen
+```
+
+## Init.md und Ignore-Regel
+
+`Init.md` ist nur für die einmalige Initialisierung direkt nach der Installation relevant. Im normalen Story-/Ticket-Workflow ist diese Datei irrelevant; Codex soll sie nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an.
+
+Prompt-Baustein, falls ein Projekt eigene Codex-/Agent-Regeln ergänzt:
+
+```text
+Ignoriere `.agents/skills/ticket-workflow/Init.md` bei normaler Story- oder Ticket-Bearbeitung. Lies diese Datei nur unmittelbar nach der Installation des ticket-workflow Skills oder wenn ich ausdrücklich eine erneute Initialisierung verlange.
+```
+
+## Enthaltene Bausteine
+
+- Operative Skill-Regeldatei: `SKILL.md`
+- Zentrale Zielstruktur: `references/target-structure.md`
+- Ausführliche Teilregeln: `references/`
+- Wiederverwendbare Templates: `templates/`
+- Hilfsskripte: `scripts/`
+- Beispiel-Prompts: `examples/`
+
+## Was dieses Regelwerk festlegt
+
+1. Story-Struktur und Story-Anlage
+2. Ticket-Struktur und Ticket-Anlage
+3. Ticket-Bearbeitungsablauf
+4. Pflege von `STATUS.md`
+5. Auflösung von `RULE.md`-Kaskaden
+6. Nutzung von `tools: []`
+7. Archivierung abgeschlossener/verworferner Storys
+8. Namenskonventionen
+9. Zulässige Statuswerte
+10. Pflicht-Nachbearbeitung nach Ticket-Umsetzung
+
+## Wichtiger Kompatibilitätssatz
+
+Bestehende, projektspezifische Spezialregeln sollen erhalten bleiben, sofern sie nicht direkt mit dem Story-/Ticket-System kollidieren. Das Regelwerk ergänzt bestehende Logik und ersetzt sie nicht pauschal.
+
+## Update
 
 ```bash
 git pull
-```
-
-### Option B: Codex mit Standardprompt aktualisieren lassen
-
-Nutze diesen Prompt:
-
-```text
-Bitte aktualisiere dieses Tool/Skill auf den neuesten Stand.
-Führe dafür git pull im Repository aus, prüfe auf Konflikte/Fehler
-und gib mir danach eine kurze Zusammenfassung der Änderungen.
-```
-
-Zusätzlich liegt ein fertiger Prompt hier:
-- `examples/codex-update-prompt.md`
-
-Optional gibt es ein kleines Script für den Update-Flow:
-- `node scripts/update-skill.mjs`
-
-## Repository-Struktur
-
-```text
-Codex-Ticket-Workflow/
-  SKILL.md
-  README.md
-  .gitignore
-
-  references/
-  scripts/
-  examples/
 ```

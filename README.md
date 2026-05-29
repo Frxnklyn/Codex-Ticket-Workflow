@@ -21,7 +21,19 @@ Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Tick
 Nutze `.agents/skills/ticket-workflow/` als Zielordner.
 Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 Überschreibe keine vorhandenen Dateien ungefragt.
-Gib am Ende eine kurze Zusammenfassung aus, welche Dateien und Ordner erstellt, geändert oder übersprungen wurden.
+Optional kannst du einzelne Initialisierungspunkte ignorieren, indem du sie nach `ignore:` nennst. Beispiel: `ignore: Beispielstory anlegen, BeispielTicket anlegen`
+Gib am Ende eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
+```
+
+
+### Init-Punkte ignorieren
+
+`Init.md` kann mehrere Initialisierungspunkte enthalten. Codex soll einen Punkt ignorieren, wenn der Installations- oder Re-Initialisierungsprompt nach `ignore:` die Nummer, Überschrift oder den Kurznamen des Punkts nennt.
+
+Beispiel:
+
+```text
+ignore: Beispielstory anlegen, BeispielTicket anlegen
 ```
 
 ## Init.md und Ignore-Regel

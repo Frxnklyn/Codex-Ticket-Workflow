@@ -15,8 +15,9 @@ Installationsregeln:
 Nach der Installation:
 - Bitte schaue in `.agents/skills/ticket-workflow/Init.md`, sobald du fertig bist.
 - Arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
-- Lege dabei zunächst nur die in `.agents/skills/ticket-workflow/references/target-structure.md` beschriebene Minimalstruktur an.
-- Lege keine Beispiel-Story und kein Beispiel-Ticket an, außer ich fordere es ausdrücklich an.
+- Beachte `ignore:`-Angaben im Prompt: Wenn dort eine Punktnummer, Überschrift oder ein Kurzname genannt wird, überspringe diesen Initialisierungspunkt bewusst.
+- Wenn keine `ignore:`-Angaben gesetzt sind, führe auch die Beispielstory- und BeispielTicket-Punkte projektbezogen aus.
+- Beispiel, wenn keine Beispiele angelegt werden sollen: `ignore: Beispielstory anlegen, BeispielTicket anlegen`.
 
 Ignore-Regel für spätere Arbeit:
 - Ergänze vorhandene Codex-/Agent-Regeln sinngemäß um folgenden Hinweis, falls solche Regeln im Projekt gepflegt werden:

@@ -48,20 +48,34 @@ Bei dieser Standardinstallation bleibt `.agents/skills/ticket-workflow/.git/` be
 ### Installationsprompt für Codex
 
 ```text
-Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git als eingebettetes Git-Repository/Subrepo in dieses aktuelle Projekt.
+Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git als eingebettetes Git-Repository/Submodule in dieses aktuelle Projekt.
 
 INSTALLATION_MODE=direct
 
-Nutze `.agents/skills/ticket-workflow/` als Zielordner.
-Klone das Repository direkt nach `.agents/skills/ticket-workflow/`; lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
-Lasse den inneren `.git/`-Ordner in `.agents/skills/ticket-workflow/.git/` erhalten, damit der Skill separat versioniert bleibt.
-Nimm keine Änderungen am Git-Index des Hauptprojekts vor: Führe dort kein `git add`, keinen Commit und keinen Push aus.
-Wichtig: Trage `.agents/skills/ticket-workflow/` **nicht** in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien ein. Der Ordner soll später im Hauptrepo bewusst als eingebettetes Repository/Subrepo/Submodule aufgenommen werden können.
-Nimm `.agents/skills/ticket-workflow/` jetzt nicht als normale Dateien in das Hauptrepo auf. Wenn eine spätere Registrierung im Hauptrepo gewünscht ist, soll sie separat bestätigt werden.
-Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
-Überschreibe keine vorhandenen Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
-Optional kannst du einzelne Initialisierungspunkte ignorieren, indem du sie nach `ignore:` nennst. Beispiel: `ignore: Beispielstory anlegen, BeispielTicket anlegen`
-Gib am Ende eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
+Nutze `.agents/skills/ticket-workflow/` als Zielpfad.
+Registriere das Repository im Hauptprojekt als Git-Submodule unter genau diesem Pfad, sodass `.gitmodules` angelegt bzw. aktualisiert wird und der Submodule-Gitlink im Hauptrepo staged/commit-ready sichtbar ist.
+
+Wichtig:
+- Lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
+- Der Skill soll separat versioniert bleiben.
+- Trage `.agents/skills/ticket-workflow/` nicht in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien ein.
+- Falls bereits eine Ignore-/Exclude-Regel für diesen Pfad existiert, entferne nur diese konkrete Regel.
+- Falls der Zielordner schon existiert, überschreibe nichts ungefragt.
+- Wenn der Zielordner bereits ein Git-Repository ist, prüfe Remote und HEAD und registriere es als Submodule, statt neu zu klonen.
+- Führe keinen Commit und keinen Push aus.
+- Änderungen dürfen aber im Hauptrepo staged werden, wenn sie zur Submodule-Registrierung gehören.
+
+Nach der Installation:
+1. Prüfe `git status`, `git submodule status` und `.gitmodules`.
+2. Schaue in `.agents/skills/ticket-workflow/Init.md`.
+3. Arbeite die dort definierten Initialisierungspunkte der Reihe nach ab.
+4. Für Beispielstory und Beispielticket verwende Standardwerte, sofern keine Kollision besteht.
+5. Lege das Beispielticket standardmäßig in der Beispielstory an.
+6. Überschreibe keine vorhandenen Dateien ungefragt.
+
+Am Ende:
+- Gib eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
+- Gib zusätzlich aus, welche Dateien/Einträge im Hauptrepo commit-ready sind.
 ```
 
 

@@ -24,6 +24,27 @@ mkdir -p .agents/skills
 git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
 ```
 
+### Installationsprompt für Codex
+
+```text
+Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git in dieses aktuelle Projekt.
+
+Nutze `.agents/skills/ticket-workflow/` als Zielordner.
+Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und führe nur die dort beschriebene einmalige Initialisierung aus.
+Überschreibe keine vorhandenen Dateien ungefragt.
+Gib am Ende eine kurze Zusammenfassung aus, welche Dateien und Ordner erstellt, geändert oder übersprungen wurden.
+```
+
+## Init.md und Ignore-Regel
+
+`Init.md` ist nur für die einmalige Initialisierung direkt nach der Installation relevant. Im normalen Story-/Ticket-Workflow ist diese Datei irrelevant; Codex soll sie nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an.
+
+Prompt-Baustein, falls ein Projekt eigene Codex-/Agent-Regeln ergänzt:
+
+```text
+Ignoriere `.agents/skills/ticket-workflow/Init.md` bei normaler Story- oder Ticket-Bearbeitung. Lies diese Datei nur unmittelbar nach der Installation des ticket-workflow Skills oder wenn ich ausdrücklich eine erneute Initialisierung verlange.
+```
+
 ## Enthaltene Bausteine
 
 - Operative Skill-Regeldatei: `SKILL.md`

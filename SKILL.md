@@ -120,6 +120,13 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 - `references/story-template.md`
 - `references/ticket-template.md`
 
+
+## Init.md-Regel
+
+- `Init.md` ist nur für die einmalige Initialisierung nach Installation dieses Skills relevant.
+- Im normalen Story-/Ticket-Workflow ist `Init.md` irrelevant.
+- Codex soll `Init.md` nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an.
+
 ## README-Regel (bestehend, beibehalten)
 
 - Diese Regel gilt ausschließlich für diesen Skill (`ticket-workflow`).

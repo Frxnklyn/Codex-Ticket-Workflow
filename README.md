@@ -69,9 +69,10 @@ Nach der Installation:
 1. Prüfe `git status`, `git submodule status` und `.gitmodules`.
 2. Schaue in `.agents/skills/ticket-workflow/Init.md`.
 3. Arbeite die dort definierten Initialisierungspunkte der Reihe nach ab.
-4. Für Beispielstory und Beispielticket verwende Standardwerte, sofern keine Kollision besteht.
-5. Lege das Beispielticket standardmäßig in der Beispielstory an.
-6. Überschreibe keine vorhandenen Dateien ungefragt.
+4. Stelle für Beispielstory und Beispielticket die in `Init.md` vorgesehenen Rückfragen; gehe nicht automatisch von Standardwerten oder einem Standard-Ablageort aus.
+5. Erkläre bei jeder Rückfrage ausführlich, was gerade passiert, warum du fragst, welche Dateien/Ordner betroffen sind, welche Folgen die Optionen haben und was du nach der Antwort tun wirst.
+6. Nutze Standardwerte oder einen Ablageort nur, wenn ich sie im Prompt ausdrücklich vorgebe oder sie in einer Rückfrage bestätige.
+7. Überschreibe keine vorhandenen Dateien ungefragt.
 
 Am Ende:
 - Gib eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
@@ -116,7 +117,7 @@ Entferne nach erfolgreicher Initialisierung aus `.agents/skills/ticket-workflow/
 
 `Init.md` darf bei Beispielinhalten Rückfragen stellen. Das ist beabsichtigt, weil Beispielstory und Beispielticket projektbezogene Namen, Ziele und Ticketorte haben können.
 
-Wenn Codex Rückfragen, Bestätigungen oder Auswahlentscheidungen stellt, soll Codex bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben verwenden. Dadurch erscheinen die Fragen als Codex-Popup/Choice-Fenster. Nur wenn kein solches Tool verfügbar ist, soll Codex dieselbe Frage als normale Chat-Rückfrage stellen.
+Wenn Codex Rückfragen, Bestätigungen oder Auswahlentscheidungen stellt, soll Codex bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben verwenden. Dadurch erscheinen die Fragen als Codex-Popup/Choice-Fenster. Jede Frage soll ausführlich erklären, was gerade passiert, warum die Entscheidung nötig ist, welche Dateien oder Ordner betroffen sind, welche Folgen die Optionen haben und was Codex nach der Antwort tun wird. Nur wenn kein solches Tool verfügbar ist, soll Codex dieselbe ausführliche Frage als normale Chat-Rückfrage stellen.
 
 Für die Beispielstory fragt Codex vor dem Anlegen strukturiert:
 

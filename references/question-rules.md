@@ -4,6 +4,8 @@
 
 Wenn eine Entscheidung, Rückfrage, Bestätigung oder Auswahl durch den Nutzer nötig ist, muss Codex bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben verwenden, sodass die Frage als Codex-Popup/Choice-Dialog erscheint.
 
+Jede Frage muss ausführlich formuliert sein. Codex erklärt dabei kurz, was gerade passiert, warum die Entscheidung gebraucht wird, welche Dateien/Ordner oder Workflow-Schritte betroffen sind, welche Folgen die verfügbaren Optionen haben und was Codex nach der Antwort konkret als Nächstes macht.
+
 Dies gilt insbesondere für:
 
 - Ja/Nein-Entscheidungen
@@ -14,7 +16,7 @@ Dies gilt insbesondere für:
 
 ## Fallback ohne strukturiertes Eingabetool
 
-Nur wenn kein Tool für strukturierte Nutzereingaben verfügbar ist, stellt Codex die Frage als normale Chat-Rückfrage.
+Nur wenn kein Tool für strukturierte Nutzereingaben verfügbar ist, stellt Codex die Frage als normale Chat-Rückfrage. Auch im Chat-Fallback muss Codex dieselben ausführlichen Erklärungen zur Situation, zum Grund der Frage, zu den Optionen und zu den nächsten Schritten geben.
 
 ## Standardoptionen für allgemeine Ja/Nein-Entscheidungen
 

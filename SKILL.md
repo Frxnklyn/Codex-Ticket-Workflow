@@ -20,6 +20,7 @@ Verwenden, wenn der Nutzer z. B. sagt:
 - Story und Ticket sind strukturell ähnlich (Markdown + YAML-Frontmatter).
 - Story = übergeordneter Arbeitscontainer.
 - Ticket = einzelne konkret umsetzbare Aufgabe.
+- Tickets dürfen innerhalb einer Story oder story-los unter `.project-work/tickets/` liegen.
 - Story gilt erst als abgeschlossen, wenn relevante Tickets `done` oder `discarded` sind.
 
 ## Verbindliche Statuswerte
@@ -50,24 +51,28 @@ Bearbeitungsregel:
 
 `RULE.md` ist optional und kann auf mehreren Ebenen liegen.
 
-Beim Bearbeiten eines Tickets gilt (allgemein -> spezifisch):
+Beim Bearbeiten eines Story-Tickets gilt (allgemein -> spezifisch):
 1. `.project-work/RULE.md`
 2. `.project-work/storys/RULE.md`
 3. `.project-work/storys/<story>/RULE.md`
 4. `.project-work/storys/<story>/tickets/RULE.md`
 
+Beim Bearbeiten eines story-losen Tickets gilt:
+1. `.project-work/RULE.md`
+2. `.project-work/tickets/RULE.md`
+
 Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Arbeitsablauf Ticket-Bearbeitung
 
-1. Story öffnen.
+1. Bei Story-Tickets Story öffnen; bei story-losen Tickets direkt das Ticket öffnen.
 2. Relevante `RULE.md` lesen.
 3. `tools` aus Story und Ticket prüfen.
 4. Ticket (Aufgabe/Anforderungen/Nicht-Ziele/AC) lesen.
 5. Nur Ticket-Scope bearbeiten.
 6. Ticket aktualisieren (`status`, `updated`, AC, Arbeitsnotizen).
-7. `STATUS.md` aktualisieren.
-8. Ticketübersicht in `STORY.story.md` aktualisieren.
+7. Bei Story-Tickets `STATUS.md` aktualisieren.
+8. Bei Story-Tickets Ticketübersicht in `STORY.story.md` aktualisieren; bei story-losen Tickets entfallen Story-Dateien.
 
 ## Story anlegen
 
@@ -77,9 +82,9 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Ticket anlegen
 
-- Speicherort: `<story>/tickets/`
+- Speicherort: `<story>/tickets/` oder `.project-work/tickets/` für story-lose Tickets.
 - Name: `001-kurzer-ticket-name.ticket.md`
-- Nach Anlage Story-Ticketübersicht sofort aktualisieren.
+- Nach Anlage eines Story-Tickets Story-Ticketübersicht sofort aktualisieren; bei story-losen Tickets entfällt dieser Schritt.
 
 ## Archivierung
 

@@ -1,7 +1,7 @@
 ---
 type: ticket
 id: ticket-001
-story: story-XXX
+story: story-XXX # oder none bei story-losen Tickets
 title: Kurzer Ticket-Titel
 status: backlog
 priority: medium

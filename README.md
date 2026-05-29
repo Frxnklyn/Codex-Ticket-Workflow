@@ -43,7 +43,7 @@ mkdir -p .agents/skills
 git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
 ```
 
-Bei dieser Standardinstallation bleibt `.agents/skills/ticket-workflow/.git/` bewusst erhalten. Der Ticket-Workflow ist damit ein separat versioniertes eingebettetes Git-Repository/Subrepo und soll nicht als normale Dateien in den Git-Index des Hauptprojekts aufgenommen werden.
+Bei dieser Standardinstallation bleibt `.agents/skills/ticket-workflow/.git/` bewusst erhalten. Der Ticket-Workflow ist damit ein separat versioniertes eingebettetes Git-Repository/Subrepo und soll jetzt nicht als normale Dateien in den Git-Index des Hauptprojekts aufgenommen werden. Das bedeutet ausdrücklich nur: nicht adden, nicht committen und nicht pushen. Der Ordner darf dabei **nicht** in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien eingetragen werden, damit er später bewusst als eingebettetes Repository, Subrepo oder Submodule im Hauptrepo registriert werden kann.
 
 ### Installationsprompt für Codex
 
@@ -56,12 +56,33 @@ Nutze `.agents/skills/ticket-workflow/` als Zielordner.
 Klone das Repository direkt nach `.agents/skills/ticket-workflow/`; lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
 Lasse den inneren `.git/`-Ordner in `.agents/skills/ticket-workflow/.git/` erhalten, damit der Skill separat versioniert bleibt.
 Nimm keine Änderungen am Git-Index des Hauptprojekts vor: Führe dort kein `git add`, keinen Commit und keinen Push aus.
-Nimm `.agents/skills/ticket-workflow/` nicht als normale Dateien in das Hauptrepo auf.
+Wichtig: Trage `.agents/skills/ticket-workflow/` **nicht** in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien ein. Der Ordner soll später im Hauptrepo bewusst als eingebettetes Repository/Subrepo/Submodule aufgenommen werden können.
+Nimm `.agents/skills/ticket-workflow/` jetzt nicht als normale Dateien in das Hauptrepo auf. Wenn eine spätere Registrierung im Hauptrepo gewünscht ist, soll sie separat bestätigt werden.
 Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 Überschreibe keine vorhandenen Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
 Optional kannst du einzelne Initialisierungspunkte ignorieren, indem du sie nach `ignore:` nennst. Beispiel: `ignore: Beispielstory anlegen, BeispielTicket anlegen`
 Gib am Ende eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
 ```
+
+
+### Optional: echtes Git-Submodule statt losem Subrepo
+
+Wenn SourceTree oder andere Git-Tools den Ticket-Workflow sofort als echtes Submodule erkennen sollen, muss die Installation ausdrücklich als Submodule erfolgen. Das verändert bewusst Metadaten des Hauptrepos, insbesondere `.gitmodules` und den Gitlink im Index:
+
+```bash
+git submodule add https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
+```
+
+Passender Prompt-Baustein:
+
+```text
+Richte das Repository als echtes Git-Submodule ein:
+git submodule add https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
+
+Ändere dafür `.gitmodules` und den Gitlink im Hauptrepo, aber führe keinen Commit und keinen Push aus.
+```
+
+Dieser Submodule-Modus ist etwas anderes als die Standardinstallation als loses eingebettetes Repository/Subrepo. Er darf nur genutzt werden, wenn die Änderung am Hauptrepo ausdrücklich gewünscht ist.
 
 ### Temporärer Installationsprompt
 

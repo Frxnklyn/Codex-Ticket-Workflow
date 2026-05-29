@@ -7,4 +7,4 @@ Vorgaben:
 - Schlage 3-7 Child-Tickets vor und trage sie in der Ticketübersicht der Story ein.
 - Erzeuge für jedes Child-Ticket eine Datei im `tickets/`-Ordner der Story.
 - Achte auf sinnvolle Reihenfolge und Abhängigkeiten.
-- Überschreibe keine bestehenden Dateien ungefragt.
+- Überschreibe keine bestehenden Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).

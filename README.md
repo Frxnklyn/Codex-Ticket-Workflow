@@ -18,8 +18,8 @@ INSTALLATION_MODE=direct
 
 Erlaubte Werte:
 
-- `direct` (Standard): Das Repository wird direkt nach `.agents/skills/ticket-workflow/` geklont. Es entsteht **kein zusätzlicher Zwischenordner** wie `.agents/skills/ticket-workflow/Codex-Ticket-Workflow/`.
-- `temporary-copy`: Das Repository wird zuerst in einen temporären Ersatzordner geklont und danach wird der **Inhalt des Repositorys** nach `.agents/skills/ticket-workflow/` kopiert. Auch hier darf im Ziel kein zusätzlicher Projekt-Unterordner entstehen.
+- `direct` (Standard): Das Repository wird direkt nach `.agents/skills/ticket-workflow/` geklont und bleibt dort als eingebettetes Git-Repository/Subrepo mit eigenem inneren `.git/` erhalten. Es entsteht **kein zusätzlicher Zwischenordner** wie `.agents/skills/ticket-workflow/Codex-Ticket-Workflow/`.
+- `temporary-copy`: Das Repository wird zuerst in einen temporären Ersatzordner geklont und danach wird der **Inhalt des Repositorys** nach `.agents/skills/ticket-workflow/` kopiert. Auch hier darf im Ziel kein zusätzlicher Projekt-Unterordner entstehen. Dieser Modus ist keine Subrepo-Installation, weil der innere `.git/`-Ordner nach erfolgreicher Initialisierung entfernt wird.
 
 `temporary-copy` ist nur sinnvoll, wenn Codex vor dem Kopieren prüfen oder filtern soll. Wenn dieser Modus genutzt wird, müssen nach der Initialisierung überflüssige Installationsdateien aus der Zielinstallation entfernt werden, sofern sie nicht ausdrücklich behalten werden sollen:
 
@@ -36,24 +36,29 @@ Die operativ benötigten Skill-Bestandteile bleiben erhalten, insbesondere:
 - `scripts/`
 - `examples/`
 
-### Direkte Standardinstallation
+### Standardinstallation als Subrepo
 
 ```bash
 mkdir -p .agents/skills
 git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/ticket-workflow
 ```
 
+Bei dieser Standardinstallation bleibt `.agents/skills/ticket-workflow/.git/` bewusst erhalten. Der Ticket-Workflow ist damit ein separat versioniertes eingebettetes Git-Repository/Subrepo und soll nicht als normale Dateien in den Git-Index des Hauptprojekts aufgenommen werden.
+
 ### Installationsprompt für Codex
 
 ```text
-Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git in dieses aktuelle Projekt.
+Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git als eingebettetes Git-Repository/Subrepo in dieses aktuelle Projekt.
 
 INSTALLATION_MODE=direct
 
 Nutze `.agents/skills/ticket-workflow/` als Zielordner.
-Kopiere oder klone den Inhalt des Repositories direkt in diesen Zielordner; lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
+Klone das Repository direkt nach `.agents/skills/ticket-workflow/`; lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
+Lasse den inneren `.git/`-Ordner in `.agents/skills/ticket-workflow/.git/` erhalten, damit der Skill separat versioniert bleibt.
+Nimm keine Änderungen am Git-Index des Hauptprojekts vor: Führe dort kein `git add`, keinen Commit und keinen Push aus.
+Nimm `.agents/skills/ticket-workflow/` nicht als normale Dateien in das Hauptrepo auf.
 Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
-Überschreibe keine vorhandenen Dateien ungefragt.
+Überschreibe keine vorhandenen Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
 Optional kannst du einzelne Initialisierungspunkte ignorieren, indem du sie nach `ignore:` nennst. Beispiel: `ignore: Beispielstory anlegen, BeispielTicket anlegen`
 Gib am Ende eine kurze Zusammenfassung aus, welche Punkte erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurden.
 ```
@@ -69,12 +74,22 @@ Klone das Repository zuerst in einen temporären Ersatzordner.
 Kopiere anschließend den Inhalt des geklonten Repositories direkt nach `.agents/skills/ticket-workflow/`.
 Lege keinen zusätzlichen Zwischenordner innerhalb von `.agents/skills/ticket-workflow/` an.
 Entferne nach erfolgreicher Initialisierung aus `.agents/skills/ticket-workflow/` alles, was für die spätere Skill-Nutzung nicht benötigt wird: `.git/`, `Init.md`, `LICENSE` und `README.md`.
-Überschreibe keine vorhandenen Dateien ungefragt.
+Überschreibe keine vorhandenen Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
 ```
 
 ### Rückfragen bei der Initialisierung
 
 `Init.md` darf bei Beispielinhalten Rückfragen stellen. Das ist beabsichtigt, weil Beispielstory und Beispielticket projektbezogene Namen, Ziele und Ticketorte haben können.
+
+Wenn Codex Rückfragen, Bestätigungen oder Auswahlentscheidungen stellt, soll Codex bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben verwenden. Dadurch erscheinen die Fragen als Codex-Popup/Choice-Fenster. Nur wenn kein solches Tool verfügbar ist, soll Codex dieselbe Frage als normale Chat-Rückfrage stellen.
+
+Für die Beispielstory fragt Codex vor dem Anlegen strukturiert:
+
+- Soll eine Beispielstory erstellt werden?
+  - Ja, mit Standardwerten
+  - Nein, überspringen
+
+Bei Zustimmung nutzt Codex die Standardwerte aus `Init.md`: Projektname aus Repository-/Ordnername, nächste freie Story-ID und Story-Name `story-001-<projektname>-workflow-einfuehren`.
 
 Wenn Codex **keine Rückfragen stellen darf**, ergänze den Prompt ausdrücklich, zum Beispiel:
 

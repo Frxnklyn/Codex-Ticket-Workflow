@@ -13,13 +13,14 @@ Bei der ersten Einrichtung dieses Skills im Zielprojekt:
 1. Lies alle Initialisierungspunkte in dieser Datei.
 2. Arbeite die Punkte von oben nach unten ab.
 3. Führe jeden Punkt idempotent aus: vorhandene passende Dateien oder Ordner gelten als bereits erledigt.
-4. Überschreibe keine vorhandenen Dateien oder Ordner ungefragt.
+4. Überschreibe keine vorhandenen Dateien oder Ordner ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
 5. Prüfe den Nutzerprompt auf `ignore:`-Angaben.
 6. Ignoriere einen Initialisierungspunkt, wenn nach `ignore:` seine Nummer, seine Überschrift oder sein Kurzname genannt wird.
 7. Mehrere zu ignorierende Punkte können kommagetrennt oder zeilenweise angegeben werden.
 8. Stelle vor fachlichen Beispielinhalten Rückfragen, sofern der Prompt Rückfragen nicht ausdrücklich verbietet.
-9. Wenn Rückfragen verboten sind und ein Punkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere den Grund. Erfinde keine projektfachlichen Details.
-10. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
+9. Nutze für alle Rückfragen, Bestätigungen und Auswahlentscheidungen bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben, damit Codex ein Popup/Choice-Fenster anzeigt; stelle die Frage nur dann als normale Chat-Rückfrage, wenn kein solches Tool verfügbar ist.
+10. Wenn Rückfragen verboten sind und ein Punkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere den Grund. Erfinde keine projektfachlichen Details.
+11. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
 
 Beispiel für gezieltes Ignorieren im Installationsprompt:
 
@@ -56,15 +57,31 @@ ignore: Beispielstory anlegen, BeispielTicket anlegen
 
 **Voraussetzung:** Punkt 1 ist erledigt oder war bereits vorhanden.
 
+**Interaktive Abfrage:**
+
+Wenn ein Tool für strukturierte Nutzereingaben verfügbar ist, nutze dieses Tool, um vor dem Anlegen als Codex-Popup zu fragen:
+
+- Soll eine Beispielstory erstellt werden?
+  - Ja, mit Standardwerten
+  - Nein, überspringen
+
+Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage als normale Chat-Rückfrage.
+
+**Standardwerte bei Zustimmung:**
+
+- Projektname aus dem Repository-/Ordnernamen ableiten.
+- Nächste freie Story-ID verwenden, normalerweise `story-001`.
+- Story-Name: `story-001-<projektname>-workflow-einfuehren`.
+
 **Aktion:**
 
 - Ermittle einen kurzen Projektnamen aus dem Zielprojekt (z. B. Repository- oder Ordnername).
-- Frage vor dem Anlegen nach, ob eine Beispielstory erstellt werden soll.
-- Frage, falls nötig, nach Projektbezug, gewünschtem Story-Namen und ob Standardwerte verwendet werden dürfen.
+- Frage mit der oben beschriebenen interaktiven Abfrage vor dem Anlegen nach, ob eine Beispielstory erstellt werden soll.
+- Wenn der Nutzer `Nein, überspringen` wählt, überspringe diesen Punkt bewusst.
+- Wenn der Nutzer `Ja, mit Standardwerten` wählt, lege die Beispielstory mit den genannten Standardwerten an.
+- Stelle zusätzliche Rückfragen nur, wenn die Standardwerte nicht sicher oder kollisionsfrei anwendbar sind; nutze auch dafür bevorzugt strukturierte Nutzereingaben.
 - Wenn Rückfragen verboten sind und der Prompt keine ausdrückliche Zustimmung zur Beispielstory enthält, überspringe diesen Punkt statt Annahmen zu erfinden.
 - Lege eine Beispielstory unter dem in `references/target-structure.md` beschriebenen aktiven Story-Ort an.
-- Verwende die nächste freie Story-ID, normalerweise `story-001`.
-- Verwende einen projektbezogenen Namen wie `story-001-<projektname>-workflow-einfuehren`.
 - Nutze `templates/STORY.story.md`, `templates/STATUS.md` und `templates/NOTES.md` als Grundlage.
 - Markiere die Story in Titel, Ziel oder Hinweistext eindeutig als Beispiel/Startpunkt, damit Menschen sie später anpassen oder löschen können.
 - Erzeuge den leeren `tickets/`-Ordner innerhalb der Story.
@@ -85,8 +102,9 @@ ignore: Beispielstory anlegen, BeispielTicket anlegen
 
 **Aktion:**
 
-- Frage vor dem Anlegen nach, ob ein Beispielticket erstellt werden soll.
-- Frage nach dem gewünschten Ablageort: im `tickets/`-Ordner der Beispielstory oder als story-loses Ticket unter `.project-work/tickets/`.
+- Frage vor dem Anlegen per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ob ein Beispielticket erstellt werden soll.
+- Frage den gewünschten Ablageort per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ab: im `tickets/`-Ordner der Beispielstory oder als story-loses Ticket unter `.project-work/tickets/`.
+- Stelle diese Fragen nur als normale Chat-Rückfragen, wenn kein Tool für strukturierte Nutzereingaben verfügbar ist.
 - Wenn Rückfragen verboten sind und der Prompt keinen Ablageort vorgibt, überspringe diesen Punkt statt Annahmen zu erfinden.
 - Lege das Ticket am bestätigten Ablageort an.
 - Verwende die nächste freie Ticketnummer am gewählten Ablageort, normalerweise `001`.

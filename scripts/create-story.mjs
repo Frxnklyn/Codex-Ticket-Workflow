@@ -1,14 +1,77 @@
-import { ROOT, path, nextId, slugify, writeIfMissing } from './_shared.mjs';
+import { ROOT, fs, path, nextId, slugify, writeIfMissing } from './_shared.mjs';
 
 const title = process.argv.slice(2).join(' ').trim();
 if (!title) { console.error('Usage: node create-story.mjs "Story title"'); process.exit(1); }
 
-const dir = path.join(ROOT, 'docs', 'stories', 'backlog');
-const id = await nextId(dir, 'STORY');
+const baseDir = path.join(ROOT, '.project-work', 'storys');
+const id = await nextId(baseDir, 'story');
 const slug = slugify(title);
-const file = path.join(dir, `${id}-${slug}.md`);
+const dir = path.join(baseDir, `${id}-${slug}`);
+const today = new Date().toISOString().slice(0, 10);
 
-const content = `# ${id}: ${title}\n\n- **ID:** ${id}\n- **Title:** ${title}\n- **Status:** backlog\n\n## Goal\n\n## Context\n\n## Scope\n\n## Out of scope\n\n## Child tickets\n\n## Ticket order\n\n## Acceptance criteria\n- [ ] ...\n\n## Notes\n`;
+await fs.mkdir(path.join(dir, 'tickets'), { recursive: true });
 
-const created = await writeIfMissing(file, content);
-console.log(created ? `Created ${file}` : `Skipped (exists): ${file}`);
+const story = `---
+type: story
+id: ${id}
+title: ${title}
+status: backlog
+priority: medium
+created: ${today}
+updated: ${today}
+tools: []
+---
+
+# Story: ${title}
+
+## Ziel
+
+...
+
+## Kontext
+
+...
+
+## Anforderungen
+
+- ...
+
+## Tickets
+
+Noch keine Tickets angelegt.
+
+## Akzeptanzkriterien
+
+- [ ] ...
+
+## Hinweise für Codex
+
+...
+`;
+
+const status = `# Status: ${title}
+
+## Aktueller Stand
+
+- Status: backlog
+- Zuletzt aktualisiert: ${today}
+
+## Offene Punkte
+
+- ...
+
+## Blocker
+
+Keine bekannt.
+`;
+
+const notes = `# Notizen: ${title}
+
+Noch keine Notizen.
+`;
+
+const createdStory = await writeIfMissing(path.join(dir, 'STORY.story.md'), story);
+await writeIfMissing(path.join(dir, 'STATUS.md'), status);
+await writeIfMissing(path.join(dir, 'NOTES.md'), notes);
+
+console.log(createdStory ? `Created ${dir}` : `Skipped existing story files in ${dir}`);

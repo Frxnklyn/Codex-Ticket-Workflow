@@ -3,21 +3,32 @@ Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Tick
 Ziel:
 Richte den Ticket-Workflow direkt in diesem Projekt ein.
 
+Installationsmodus:
+- `INSTALLATION_MODE=direct`
+- Standard ist `direct`: Klone den Repository-Inhalt direkt nach `.agents/skills/ticket-workflow/`.
+- Lege keinen Zwischenordner wie `.agents/skills/ticket-workflow/Codex-Ticket-Workflow/` an.
+- Nur wenn ich ausdrücklich `INSTALLATION_MODE=temporary-copy` angebe, darfst du zuerst in einen temporären Ersatzordner klonen und danach den Inhalt nach `.agents/skills/ticket-workflow/` kopieren.
+
 Installationsregeln:
 - Prüfe zuerst die vorhandene Ordnerstruktur.
 - Nutze `.agents/skills/` als Skill-Ziel.
 - Erstelle `.agents/skills/ticket-workflow/`, falls nicht vorhanden.
-- Klone oder kopiere den Skill nach `.agents/skills/ticket-workflow/`.
+- Klone oder kopiere den Inhalt des Skills direkt nach `.agents/skills/ticket-workflow/`.
 - Überschreibe keine bestehenden Dateien ungefragt.
 - Wenn eine Datei bereits existiert, prüfe, ob sie erhalten bleiben muss.
 - Falls Konflikte entstehen, frage nach.
+- Wenn `INSTALLATION_MODE=temporary-copy` genutzt wird, entferne nach erfolgreicher Initialisierung aus `.agents/skills/ticket-workflow/` unnötige Installationsdateien: `.git/`, `Init.md`, `LICENSE` und `README.md`.
 
 Nach der Installation:
 - Bitte schaue in `.agents/skills/ticket-workflow/Init.md`, sobald du fertig bist.
 - Arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 - Beachte `ignore:`-Angaben im Prompt: Wenn dort eine Punktnummer, Überschrift oder ein Kurzname genannt wird, überspringe diesen Initialisierungspunkt bewusst.
-- Wenn keine `ignore:`-Angaben gesetzt sind, führe auch die Beispielstory- und BeispielTicket-Punkte projektbezogen aus.
+- Bei Beispielstory und Beispielticket darfst du Rückfragen stellen, bevor du fachliche Beispielinhalte anlegst.
+- Wenn keine `ignore:`-Angaben gesetzt sind, führe die nicht ignorierten Punkte gemäß `Init.md` aus.
 - Beispiel, wenn keine Beispiele angelegt werden sollen: `ignore: Beispielstory anlegen, BeispielTicket anlegen`.
+
+Optionaler Zusatz, wenn Rückfragen verboten sind:
+- `Rückfragen sind verboten. Wenn ein Initialisierungspunkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere das Ergebnis kurz. Erfinde keine projektfachlichen Details.`
 
 Ignore-Regel für spätere Arbeit:
 - Ergänze vorhandene Codex-/Agent-Regeln sinngemäß um folgenden Hinweis, falls solche Regeln im Projekt gepflegt werden:

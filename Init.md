@@ -17,7 +17,9 @@ Bei der ersten Einrichtung dieses Skills im Zielprojekt:
 5. Prüfe den Nutzerprompt auf `ignore:`-Angaben.
 6. Ignoriere einen Initialisierungspunkt, wenn nach `ignore:` seine Nummer, seine Überschrift oder sein Kurzname genannt wird.
 7. Mehrere zu ignorierende Punkte können kommagetrennt oder zeilenweise angegeben werden.
-8. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
+8. Stelle vor fachlichen Beispielinhalten Rückfragen, sofern der Prompt Rückfragen nicht ausdrücklich verbietet.
+9. Wenn Rückfragen verboten sind und ein Punkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere den Grund. Erfinde keine projektfachlichen Details.
+10. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
 
 Beispiel für gezieltes Ignorieren im Installationsprompt:
 
@@ -57,6 +59,9 @@ ignore: Beispielstory anlegen, BeispielTicket anlegen
 **Aktion:**
 
 - Ermittle einen kurzen Projektnamen aus dem Zielprojekt (z. B. Repository- oder Ordnername).
+- Frage vor dem Anlegen nach, ob eine Beispielstory erstellt werden soll.
+- Frage, falls nötig, nach Projektbezug, gewünschtem Story-Namen und ob Standardwerte verwendet werden dürfen.
+- Wenn Rückfragen verboten sind und der Prompt keine ausdrückliche Zustimmung zur Beispielstory enthält, überspringe diesen Punkt statt Annahmen zu erfinden.
 - Lege eine Beispielstory unter dem in `references/target-structure.md` beschriebenen aktiven Story-Ort an.
 - Verwende die nächste freie Story-ID, normalerweise `story-001`.
 - Verwende einen projektbezogenen Namen wie `story-001-<projektname>-workflow-einfuehren`.
@@ -74,24 +79,27 @@ ignore: Beispielstory anlegen, BeispielTicket anlegen
 
 **Kurzname:** `BeispielTicket anlegen`
 
-**Ziel:** Ein erstes Beispiel-Ticket zeigt, wie eine kleine konkrete Aufgabe innerhalb der Beispielstory formuliert wird.
+**Ziel:** Ein erstes Beispiel-Ticket zeigt, wie eine kleine konkrete Aufgabe formuliert wird. Es darf innerhalb einer Beispielstory oder als story-loses Ticket unter `.project-work/tickets/` angelegt werden.
 
-**Voraussetzung:** Punkt 2 ist erledigt, bereits vorhanden oder wurde nicht ignoriert. Wenn die Beispielstory ignoriert wurde und keine passende Beispielstory existiert, ist dieser Punkt zu überspringen.
+**Voraussetzung:** Punkt 1 ist erledigt oder war bereits vorhanden. Wenn das Ticket in einer Beispielstory liegen soll, muss Punkt 2 erledigt, bereits vorhanden oder ausdrücklich gewünscht sein.
 
 **Aktion:**
 
-- Lege das Ticket im `tickets/`-Ordner der Beispielstory an.
-- Verwende die nächste freie Ticketnummer, normalerweise `001`.
+- Frage vor dem Anlegen nach, ob ein Beispielticket erstellt werden soll.
+- Frage nach dem gewünschten Ablageort: im `tickets/`-Ordner der Beispielstory oder als story-loses Ticket unter `.project-work/tickets/`.
+- Wenn Rückfragen verboten sind und der Prompt keinen Ablageort vorgibt, überspringe diesen Punkt statt Annahmen zu erfinden.
+- Lege das Ticket am bestätigten Ablageort an.
+- Verwende die nächste freie Ticketnummer am gewählten Ablageort, normalerweise `001`.
 - Verwende einen projektbezogenen Namen wie `001-workflow-struktur-pruefen.ticket.md`.
 - Nutze `templates/TICKET.ticket.md` als Grundlage.
 - Formuliere Aufgabe, Kontext, Anforderungen und Akzeptanzkriterien passend zum Zielprojekt: Das Ticket soll die angelegte `.project-work/`-Struktur prüfen und bei Bedarf dokumentieren.
-- Aktualisiere die Ticketübersicht in `STORY.story.md` der Beispielstory.
+- Aktualisiere die Ticketübersicht in `STORY.story.md` der Beispielstory nur, wenn das Ticket innerhalb dieser Story angelegt wurde.
 - Überschreibe kein vorhandenes Ticket.
 
 **Ergebnis:**
 
 - Ein projektbezogenes Beispiel-Ticket existiert oder wurde bewusst ignoriert/übersprungen.
-- Die Beispielstory referenziert das Ticket nur, wenn es tatsächlich angelegt wurde.
+- Die Beispielstory referenziert das Ticket nur, wenn es tatsächlich innerhalb dieser Story angelegt wurde.
 
 ## Danach ignorieren
 

@@ -7,6 +7,9 @@ Diese Datei ist die zentrale Referenz für die Ordner- und Dateistruktur des `ti
 ```txt
 .project-work/
   RULE.md                         # optional, globale Projektarbeitsregeln
+  tickets/                         # optionale story-lose Tickets
+    RULE.md                       # optional, Regeln für story-lose Tickets
+    001-standalone-ticket.ticket.md
   storys/
     RULE.md                       # optional, Regeln für aktive Storys
     story-001-short-name/
@@ -34,11 +37,16 @@ Bei der einmaligen Initialisierung müssen zunächst nur diese Ordner existieren
 
 ```txt
 .project-work/
+  tickets/
   storys/
   archive/
 ```
 
-`RULE.md`, Story-Ordner, Tickets und Archiv-Jahresordner werden erst angelegt, wenn sie fachlich benötigt werden.
+`RULE.md`, Story-Ordner, konkrete Ticketdateien und Archiv-Jahresordner werden erst angelegt, wenn sie fachlich benötigt werden.
+
+## Story-lose Tickets
+
+Tickets dürfen auch außerhalb von Storys unter `.project-work/tickets/` existieren. Dieser Ort ist für kleine, unabhängige Aufgaben gedacht, die keine eigene Story benötigen. Story-lose Tickets verwenden dasselbe Ticket-Template; das Frontmatter-Feld `story` kann leer bleiben oder auf `none` gesetzt werden.
 
 ## Verweise
 

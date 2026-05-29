@@ -7,7 +7,7 @@
 
 ## Ticket-Struktur
 
-- Speicherort: `<story>/tickets/`
+- Speicherort gemäß `references/target-structure.md` im `tickets/`-Ordner der jeweiligen Story.
 - Namensschema: `001-kurzer-ticket-name.ticket.md`
 - Nummern sind innerhalb der Story fortlaufend.
 

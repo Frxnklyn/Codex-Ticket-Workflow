@@ -4,18 +4,7 @@ Dieses Repository ist ein wiederverwendbares **Codex-Regelwerk (Skill)** für ei
 
 ## Kernziel
 
-Ein einheitliches, schnell beschreibbares Arbeitsmodell, das Codex zuverlässig lesen und bearbeiten kann.
-
-```txt
-.project-work/
-  storys/
-    story-001-short-name/
-      STORY.story.md
-      STATUS.md
-      tickets/
-        001-short-ticket-name.ticket.md
-      NOTES.md
-```
+Ein einheitliches, schnell beschreibbares Arbeitsmodell, das Codex zuverlässig lesen und bearbeiten kann. Die verbindliche Zielstruktur steht zentral in `references/target-structure.md`; andere Dokumente verweisen darauf, statt die Struktur zu duplizieren.
 
 ## Installation
 
@@ -48,6 +37,7 @@ Ignoriere `.agents/skills/ticket-workflow/Init.md` bei normaler Story- oder Tick
 ## Enthaltene Bausteine
 
 - Operative Skill-Regeldatei: `SKILL.md`
+- Zentrale Zielstruktur: `references/target-structure.md`
 - Ausführliche Teilregeln: `references/`
 - Wiederverwendbare Templates: `templates/`
 - Hilfsskripte: `scripts/`

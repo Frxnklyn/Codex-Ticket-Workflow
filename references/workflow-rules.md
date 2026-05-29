@@ -2,18 +2,7 @@
 
 ## Zielmodell
 
-Arbeite nach dieser Struktur:
-
-```txt
-.project-work/
-  storys/
-    story-001-short-name/
-      STORY.story.md
-      STATUS.md
-      tickets/
-        001-short-ticket-name.ticket.md
-      NOTES.md
-```
+Arbeite nach der zentral beschriebenen Zielstruktur in `references/target-structure.md`. Diese Workflow-Regeln ergänzen die dortige Struktur um Verhaltensregeln.
 
 ## Grundregeln
 

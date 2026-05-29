@@ -4,18 +4,7 @@
 
 Wiederverwendbares Codex-Regelwerk für einen einfachen Story-/Ticket-Workflow auf Markdown-Basis.
 
-Zielstruktur im Zielprojekt:
-
-```txt
-.project-work/
-  storys/
-    story-001-short-name/
-      STORY.story.md
-      STATUS.md
-      tickets/
-        001-short-ticket-name.ticket.md
-      NOTES.md
-```
+Die verbindliche Zielstruktur im Zielprojekt steht zentral in `references/target-structure.md`. Diese Datei ist die maßgebliche Quelle für Ordner- und Dateistruktur; hier im Skill werden nur die operativen Regeln ergänzt.
 
 ## Wann dieser Skill verwendet werden soll
 
@@ -82,13 +71,9 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Story anlegen
 
-- Ordner: `.project-work/storys/story-XXX-kurzer-name/`
-- Dateien:
-  - `STORY.story.md`
-  - `STATUS.md`
-  - `tickets/`
-  - `NOTES.md`
-- Templates: `templates/`
+- Zielpfad und Pflichtdateien gemäß `references/target-structure.md`.
+- Namensdetails gemäß `references/story-rules.md`.
+- Templates: `templates/`.
 
 ## Ticket anlegen
 
@@ -98,8 +83,7 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Archivierung
 
-- Aktiv: `.project-work/storys/`
-- Archiv: `.project-work/archive/YYYY/`
+- Aktive und archivierte Story-Orte gemäß `references/target-structure.md`.
 - Nur wenn Story-Status `done` oder `discarded`.
 - Immer komplette Story verschieben.
 
@@ -111,6 +95,7 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Referenzen
 
+- `references/target-structure.md`
 - `references/workflow-rules.md`
 - `references/story-rules.md`
 - `references/ticket-rules.md`

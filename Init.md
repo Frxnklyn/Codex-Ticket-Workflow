@@ -4,28 +4,18 @@ Diese Datei ist **nur für die einmalige Initialisierung nach der Installation**
 
 ## Zweck
 
-Wenn dieser Skill in einem Zielprojekt eingerichtet wird, soll Codex direkt die grundlegende Arbeitsstruktur anlegen.
+Wenn dieser Skill in einem Zielprojekt eingerichtet wird, soll Codex direkt die grundlegende Arbeitsstruktur anlegen. Die vollständige Zielstruktur steht zentral in `references/target-structure.md`.
 
 ## Einmalig anzulegende Ordnerstruktur
 
-```txt
-.project-work/
-  storys/
-  archive/
-```
-
-Optional kann zusätzlich eine globale Regeldatei vorbereitet werden:
-
-```txt
-.project-work/RULE.md
-```
+Lege bei der Initialisierung nur die Minimalstruktur aus `references/target-structure.md` an. Optionale Dateien wie `RULE.md` werden erst erzeugt, wenn sie ausdrücklich benötigt werden.
 
 ## Initialisierungsregel für Codex
 
 Bei der ersten Einrichtung dieses Skills im Zielprojekt:
 
-1. Prüfe, ob `.project-work/` bereits existiert.
-2. Falls nicht vorhanden, lege `.project-work/`, `.project-work/storys/` und `.project-work/archive/` an.
+1. Prüfe, ob die in `references/target-structure.md` genannte Minimalstruktur bereits existiert.
+2. Falls nicht vorhanden, lege nur diese Minimalstruktur an.
 3. Überschreibe keine vorhandenen Dateien oder Ordner ungefragt.
 4. Lege noch keine Beispiel-Story und kein Beispiel-Ticket an, außer der Nutzer fordert es ausdrücklich an.
 5. Gib am Ende kurz aus, welche Ordner erstellt oder bereits gefunden wurden.

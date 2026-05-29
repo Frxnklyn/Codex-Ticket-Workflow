@@ -8,12 +8,7 @@
 
 ## Story-Struktur
 
-Pflichtdateien je Story-Ordner:
-
-- `STORY.story.md`
-- `STATUS.md`
-- `tickets/`
-- `NOTES.md`
+Die vollständige Story-Zielstruktur steht zentral in `references/target-structure.md`.
 
 Namensschema Story-Ordner:
 
@@ -21,12 +16,12 @@ Namensschema Story-Ordner:
 
 ## Story-Anlage
 
-- Neue Story in `.project-work/storys/` anlegen.
+- Neue Story am in `references/target-structure.md` definierten aktiven Story-Ort anlegen.
 - Mindestens die Templates aus `templates/` verwenden.
 - Story-ID (`story-XXX`) und Ordnernamen konsistent halten.
 
 ## Archivierung
 
-- Archivziel: `.project-work/archive/YYYY/`
+- Archivziel gemäß `references/target-structure.md`.
 - Archiv nur bei Story-Status `done` oder `discarded`.
-- Immer komplette Story verschieben (inkl. `tickets/`, `STATUS.md`, `NOTES.md`, optional `RULE.md`).
+- Immer komplette Story gemäß zentraler Zielstruktur verschieben.

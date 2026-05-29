@@ -14,16 +14,16 @@ Installationsregeln:
 - Nutze `.agents/skills/` als Skill-Ziel.
 - Erstelle `.agents/skills/ticket-workflow/`, falls nicht vorhanden.
 - Klone oder kopiere den Inhalt des Skills direkt nach `.agents/skills/ticket-workflow/`.
-- Überschreibe keine bestehenden Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
+- Überschreibe keine bestehenden Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup) und erkläre ausführlich, was betroffen ist, warum du fragst, welche Folgen die Optionen haben und was du nach der Antwort tust.
 - Wenn eine Datei bereits existiert, prüfe, ob sie erhalten bleiben muss.
-- Falls Konflikte entstehen, frage per strukturierter Nutzereingabe (Codex-Popup) nach, sofern verfügbar.
+- Falls Konflikte entstehen, frage per strukturierter Nutzereingabe (Codex-Popup) nach, sofern verfügbar, und erkläre den Konflikt sowie die Auswirkungen der Optionen ausführlich.
 - Wenn `INSTALLATION_MODE=temporary-copy` genutzt wird, entferne nach erfolgreicher Initialisierung aus `.agents/skills/ticket-workflow/` unnötige Installationsdateien: `.git/`, `Init.md`, `LICENSE` und `README.md`.
 
 Nach der Installation:
 - Bitte schaue in `.agents/skills/ticket-workflow/Init.md`, sobald du fertig bist.
 - Arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 - Beachte `ignore:`-Angaben im Prompt: Wenn dort eine Punktnummer, Überschrift oder ein Kurzname genannt wird, überspringe diesen Initialisierungspunkt bewusst.
-- Bei Beispielstory und Beispielticket darfst du Rückfragen stellen, bevor du fachliche Beispielinhalte anlegst; nutze dafür bevorzugt strukturierte Nutzereingaben (Codex-Popup), sofern verfügbar.
+- Bei Beispielstory und Beispielticket darfst du Rückfragen stellen, bevor du fachliche Beispielinhalte anlegst; nutze dafür bevorzugt strukturierte Nutzereingaben (Codex-Popup), sofern verfügbar, und erkläre ausführlich, was gerade passiert, welche Dateien/Ordner betroffen sind, welche Optionen es gibt und was danach passiert.
 - Wenn keine `ignore:`-Angaben gesetzt sind, führe die nicht ignorierten Punkte gemäß `Init.md` aus.
 - Beispiel, wenn keine Beispiele angelegt werden sollen: `ignore: Beispielstory anlegen, BeispielTicket anlegen`.
 

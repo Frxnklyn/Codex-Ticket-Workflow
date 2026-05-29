@@ -18,9 +18,10 @@ Bei der ersten Einrichtung dieses Skills im Zielprojekt:
 6. Ignoriere einen Initialisierungspunkt, wenn nach `ignore:` seine Nummer, seine Überschrift oder sein Kurzname genannt wird.
 7. Mehrere zu ignorierende Punkte können kommagetrennt oder zeilenweise angegeben werden.
 8. Stelle vor fachlichen Beispielinhalten Rückfragen, sofern der Prompt Rückfragen nicht ausdrücklich verbietet.
-9. Nutze für alle Rückfragen, Bestätigungen und Auswahlentscheidungen bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben, damit Codex ein Popup/Choice-Fenster anzeigt; stelle die Frage nur dann als normale Chat-Rückfrage, wenn kein solches Tool verfügbar ist.
-10. Wenn Rückfragen verboten sind und ein Punkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere den Grund. Erfinde keine projektfachlichen Details.
-11. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
+9. Formuliere jede Rückfrage ausführlich: erkläre kurz den aktuellen Initialisierungspunkt, warum die Entscheidung nötig ist, welche Dateien/Ordner betroffen sind, welche Folgen die auswählbaren Optionen haben und was Codex nach der Antwort konkret tun wird.
+10. Nutze für alle Rückfragen, Bestätigungen und Auswahlentscheidungen bevorzugt ein verfügbares Tool für strukturierte Nutzereingaben, damit Codex ein Popup/Choice-Fenster anzeigt; stelle die Frage nur dann als normale Chat-Rückfrage, wenn kein solches Tool verfügbar ist.
+11. Wenn Rückfragen verboten sind und ein Punkt ohne Rückfrage nicht sicher ausführbar ist, überspringe oder blockiere ihn und dokumentiere den Grund. Erfinde keine projektfachlichen Details.
+12. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, ignoriert, übersprungen oder blockiert wurde.
 
 Beispiel für gezieltes Ignorieren im Installationsprompt:
 
@@ -59,13 +60,17 @@ ignore: Beispielstory anlegen, BeispielTicket anlegen
 
 **Interaktive Abfrage:**
 
-Wenn ein Tool für strukturierte Nutzereingaben verfügbar ist, nutze dieses Tool, um vor dem Anlegen als Codex-Popup zu fragen:
+Wenn ein Tool für strukturierte Nutzereingaben verfügbar ist, nutze dieses Tool, um vor dem Anlegen als Codex-Popup ausführlich zu fragen:
 
-- Soll eine Beispielstory erstellt werden?
-  - Ja, mit Standardwerten
-  - Nein, überspringen
+- Erkläre, dass Codex gerade den Initialisierungspunkt `Beispielstory anlegen` ausführt.
+- Erkläre, dass die Beispielstory eine klar markierte Start-/Demostory im aktiven Story-Ort erzeugen würde.
+- Nenne die voraussichtlich betroffenen Dateien/Ordner, insbesondere den neuen Story-Ordner, `STORY.story.md`, `STATUS.md`, `NOTES.md` und den leeren `tickets/`-Ordner.
+- Erkläre die Optionen und Folgen:
+  - Ja, mit Standardwerten: Codex legt die Beispielstory mit abgeleitetem Projektnamen, nächster freier Story-ID und Standard-Story-Namen an.
+  - Nein, überspringen: Codex legt keine Beispielstory an und dokumentiert den Punkt als übersprungen.
+- Frage danach: Soll eine Beispielstory erstellt werden?
 
-Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage als normale Chat-Rückfrage.
+Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erklärung als normale Chat-Rückfrage.
 
 **Standardwerte bei Zustimmung:**
 
@@ -103,8 +108,11 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage als normale Chat-R�
 **Aktion:**
 
 - Frage vor dem Anlegen per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ob ein Beispielticket erstellt werden soll.
+- Formuliere die Frage ausführlich: erkläre, dass Codex gerade den Initialisierungspunkt `BeispielTicket anlegen` ausführt, dass das Ticket eine kleine Beispielaufgabe zur Prüfung/Dokumentation der `.project-work/`-Struktur erzeugen würde und welche Datei voraussichtlich neu angelegt wird.
+- Erkläre bei der Ja/Nein-Entscheidung die Folgen: Bei Zustimmung legt Codex ein Beispiel-Ticket an; bei Ablehnung wird kein Ticket erzeugt und der Punkt als übersprungen dokumentiert.
 - Frage den gewünschten Ablageort per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ab: im `tickets/`-Ordner der Beispielstory oder als story-loses Ticket unter `.project-work/tickets/`.
-- Stelle diese Fragen nur als normale Chat-Rückfragen, wenn kein Tool für strukturierte Nutzereingaben verfügbar ist.
+- Erkläre bei der Ablageort-Frage ausführlich, was die Optionen bedeuten: innerhalb der Beispielstory wird zusätzlich die Ticketübersicht der Story aktualisiert; als story-loses Ticket bleibt das Ticket unabhängig unter `.project-work/tickets/`.
+- Stelle diese Fragen nur als normale Chat-Rückfragen, wenn kein Tool für strukturierte Nutzereingaben verfügbar ist, und übernimm dann dieselben Erklärungen in die Chat-Frage.
 - Wenn Rückfragen verboten sind und der Prompt keinen Ablageort vorgibt, überspringe diesen Punkt statt Annahmen zu erfinden.
 - Lege das Ticket am bestätigten Ablageort an.
 - Verwende die nächste freie Ticketnummer am gewählten Ablageort, normalerweise `001`.

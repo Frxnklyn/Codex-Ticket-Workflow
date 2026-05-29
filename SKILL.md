@@ -108,9 +108,9 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Init.md-Regel
 
-- `Init.md` ist nur für die einmalige Initialisierung nach Installation dieses Skills relevant.
+- `Init.md` ist nur für die einmalige Initialisierung nach Installation dieses Skills relevant und kann mehrere Initialisierungspunkte enthalten.
 - Im normalen Story-/Ticket-Workflow ist `Init.md` irrelevant.
-- Codex soll `Init.md` nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an.
+- Codex soll `Init.md` nicht lesen oder auswerten, außer der Nutzer fordert ausdrücklich Installation oder erneute Initialisierung an; dann sind die Punkte von oben nach unten abzuarbeiten.
 
 ## README-Regel (bestehend, beibehalten)
 

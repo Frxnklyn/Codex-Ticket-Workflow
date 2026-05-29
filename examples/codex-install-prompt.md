@@ -14,7 +14,7 @@ Installationsregeln:
 
 Nach der Installation:
 - Bitte schaue in `.agents/skills/ticket-workflow/Init.md`, sobald du fertig bist.
-- Führe nur die dort beschriebene einmalige Initialisierung aus.
+- Arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 - Lege dabei zunächst nur die in `.agents/skills/ticket-workflow/references/target-structure.md` beschriebene Minimalstruktur an.
 - Lege keine Beispiel-Story und kein Beispiel-Ticket an, außer ich fordere es ausdrücklich an.
 

@@ -19,7 +19,7 @@ git clone https://github.com/Frxnklyn/Codex-Ticket-Workflow.git .agents/skills/t
 Installiere den Codex Ticket Workflow aus https://github.com/Frxnklyn/Codex-Ticket-Workflow.git in dieses aktuelle Projekt.
 
 Nutze `.agents/skills/ticket-workflow/` als Zielordner.
-Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und führe nur die dort beschriebene einmalige Initialisierung aus.
+Wenn du mit der Installation fertig bist: Bitte schaue in `.agents/skills/ticket-workflow/Init.md` und arbeite nur die dort definierten Initialisierungspunkte der Reihe nach ab.
 Überschreibe keine vorhandenen Dateien ungefragt.
 Gib am Ende eine kurze Zusammenfassung aus, welche Dateien und Ordner erstellt, geändert oder übersprungen wurden.
 ```

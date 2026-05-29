@@ -4,21 +4,37 @@ Diese Datei ist **nur für die einmalige Initialisierung nach der Installation**
 
 ## Zweck
 
-Wenn dieser Skill in einem Zielprojekt eingerichtet wird, soll Codex direkt die grundlegende Arbeitsstruktur anlegen. Die vollständige Zielstruktur steht zentral in `references/target-structure.md`.
+Wenn dieser Skill in einem Zielprojekt eingerichtet wird, soll Codex die hier definierten Initialisierungspunkte der Reihe nach abarbeiten. Die vollständige Zielstruktur steht zentral in `references/target-structure.md`.
 
-## Einmalig anzulegende Ordnerstruktur
-
-Lege bei der Initialisierung nur die Minimalstruktur aus `references/target-structure.md` an. Optionale Dateien wie `RULE.md` werden erst erzeugt, wenn sie ausdrücklich benötigt werden.
-
-## Initialisierungsregel für Codex
+## Abarbeitungsregel für Codex
 
 Bei der ersten Einrichtung dieses Skills im Zielprojekt:
 
-1. Prüfe, ob die in `references/target-structure.md` genannte Minimalstruktur bereits existiert.
-2. Falls nicht vorhanden, lege nur diese Minimalstruktur an.
-3. Überschreibe keine vorhandenen Dateien oder Ordner ungefragt.
-4. Lege noch keine Beispiel-Story und kein Beispiel-Ticket an, außer der Nutzer fordert es ausdrücklich an.
-5. Gib am Ende kurz aus, welche Ordner erstellt oder bereits gefunden wurden.
+1. Lies alle Initialisierungspunkte in dieser Datei.
+2. Arbeite die Punkte von oben nach unten ab.
+3. Führe jeden Punkt idempotent aus: vorhandene passende Dateien oder Ordner gelten als bereits erledigt.
+4. Überschreibe keine vorhandenen Dateien oder Ordner ungefragt.
+5. Lege keine Beispiel-Story und kein Beispiel-Ticket an, außer der Nutzer fordert es ausdrücklich an.
+6. Gib am Ende pro Punkt kurz aus, ob er erstellt, bereits vorhanden, übersprungen oder blockiert wurde.
+
+## Initialisierungspunkte
+
+### 1. Ordnerstruktur einrichten
+
+**Ziel:** Die minimale Arbeitsstruktur für den Story-/Ticket-Workflow existiert im Zielprojekt.
+
+**Referenz:** `references/target-structure.md`, Abschnitt "Minimalstruktur nach Installation".
+
+**Aktion:**
+
+- Prüfe, ob die dort genannte Minimalstruktur bereits existiert.
+- Falls nicht vorhanden, lege nur diese Minimalstruktur an.
+- Erzeuge optionale Dateien wie `RULE.md` erst, wenn sie ausdrücklich benötigt werden.
+
+**Ergebnis:**
+
+- Die Minimalstruktur ist vorhanden.
+- Keine Story, kein Ticket und keine Beispielinhalte wurden automatisch erzeugt.
 
 ## Danach ignorieren
 

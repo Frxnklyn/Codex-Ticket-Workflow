@@ -163,6 +163,7 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erkl�
 - Prüfe zuerst, ob `.project-work/tickets/` bereits ein Git-Repository oder Submodule ist. Wenn ja, prüfe Remote und HEAD und dokumentiere das Ergebnis, statt ungefragt neu zu klonen.
 - Wenn `.project-work/tickets/` existiert und Dateien enthält, überschreibe, verschiebe oder lösche nichts ungefragt. Frage nach, ob und wie zusammengeführt werden soll; wenn Rückfragen verboten sind, blockiere diesen Bonus.
 - Wenn `.project-work/tickets/` leer ist oder noch nicht existiert, lege das Ticket-Repo am Pfad `.project-work/tickets/` an.
+- Prüfe nach einem erfolgreichen Klonen oder Anbinden, ob das Ticket-Repo bereits eigene Daten enthält (also relevante Dateien/Ordner außerhalb von `.git/`). Nur in diesem Fall gelten fachliche Beispielinhalte aus der Initialisierung, insbesondere Beispielstorys oder Beispiel-Tickets für den Ticket-Bereich, als zu ignorieren bzw. nicht zusätzlich anzulegen; bei einem leeren Ticket-Repo bleiben die Beispielpunkte normal nach Nutzerentscheidung ausführbar.
 - Beim losen Subrepo bleibt der innere `.git/`-Ordner erhalten. Der Ordner wird nicht automatisch in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien eingetragen; vorhandene projektbewusste Regeln bleiben erhalten, außer der Nutzer verlangt eine konkrete Änderung.
 - Beim echten Submodule-Modus dürfen `.gitmodules` und der Gitlink im Hauptrepo nur erstellt/aktualisiert werden, wenn diese Option ausdrücklich bestätigt wurde.
 - Führe keinen Commit und keinen Push aus.

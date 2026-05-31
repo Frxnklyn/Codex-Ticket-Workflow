@@ -25,12 +25,12 @@ tools: []
 
 ## Tickets
 
-- [ ] `../../tickets/001-example.ticket.md` - Example Ticket
+- [ ] `tickets/001-example.ticket.md` - Example Ticket
 
 ## Akzeptanzkriterien
 
 - [ ] ...
 
-## Hinweise für Codex
+## Hinweise fuer Codex
 
 ...

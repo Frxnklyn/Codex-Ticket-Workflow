@@ -2,11 +2,12 @@
 ## Codex Ticket Workflow
 
 Dieses Projekt hat einen `ticket-workflow` Skill.
-Nutze ihn bei Ticket-/Story-/Backlog-Aufgaben.
+Nutze ihn bei Ticket-/Story-/Backlog-Aufgaben und lies ihn zuerst.
 
 - Skill-Pfad: `.agents/skills/ticket-workflow/`
 - Storys: `.project-work/storys/`
-- Tickets: `.project-work/tickets/`
+- Story-Tickets: `.project-work/storys/<story>/tickets/`
+- Story-lose Tickets: `.project-work/tickets/`
 - Story-Zuordnung: `story: story-XXX` im Ticket-Frontmatter und Link in `STORY.story.md`
-- Lokale Präferenzen: `.codex-ticket-workflow.local.json`
+- Lokale Praeferenzen: `.codex-ticket-workflow.local.json`
 <!-- CODEX-TICKET-WORKFLOW:END -->

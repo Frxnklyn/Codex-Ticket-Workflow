@@ -1,14 +1,14 @@
 # RULE.md (Beispiel)
 
-Diese Datei ist optional und enthält zusätzliche Regeln für den Scope dieses Ordners.
+Diese Datei ist optional und enthaelt zusaetzliche Regeln fuer den Scope dieses Ordners.
 
-## Mögliche Regeln
+## Moegliche Regeln
 
-- Vor jedem Ticket-Start Branch anlegen.
-- Keine Architekturänderungen ohne eigenes Ticket.
+- Vor Story-Arbeit und vor Story-bezogenen Tickets Branch-Entscheidung einholen; story-lose Einzeltickets duerfen ohne Branch-Rueckfrage bearbeitet werden.
+- Keine Architekturaenderungen ohne eigenes Ticket.
 - Nach jeder Bearbeitung `STATUS.md` aktualisieren.
 - Nur Dateien in einem definierten Bereich anpassen.
 
-## Priorität
+## Prioritaet
 
-Spezifischere `RULE.md`-Dateien überschreiben/ergänzen allgemeinere Regeln.
+Spezifischere `RULE.md`-Dateien ueberschreiben/ergaenzen allgemeinere Regeln.

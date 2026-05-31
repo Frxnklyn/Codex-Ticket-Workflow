@@ -113,6 +113,32 @@ Entferne nach erfolgreicher Initialisierung aus `.agents/skills/ticket-workflow/
 Überschreibe keine vorhandenen Dateien ungefragt; wenn dafür eine Nutzerentscheidung nötig ist, nutze bevorzugt strukturierte Nutzereingaben (Codex-Popup).
 ```
 
+### Bonus: Ticket-Repo als Subrepo anbinden
+
+`Init.md` enthält zusätzlich einen optionalen Bonuspunkt für Projekte, die ihre Tickets in einem eigenen Repository führen möchten. Wenn der Installations- oder Re-Initialisierungsprompt einen eindeutigen Git-Repository-Link für den Ticket-Bereich enthält, kann Codex `.project-work/tickets/` als separat versioniertes Ticket-Subrepo anlegen oder anbinden. Ziel ist, Tickets unabhängig vom Hauptprojekt versionieren oder teilen zu können, ohne vorhandene Projektdateien ungefragt zu überschreiben.
+
+Der Bonus wird nur ausgeführt, wenn der Link klar als Ticket-Repo gemeint ist, zum Beispiel als Ticket-Repo, Ticket-Subrepo oder Repo für `.project-work/tickets/`. Der Link des `ticket-workflow` Skills selbst darf nicht automatisch als Ticket-Repo verwendet werden. Wenn der Pfad bereits ein Git-Repo/Submodule ist, prüft Codex Remote und HEAD; wenn dort bereits Dateien liegen, fragt Codex nach oder blockiert den Bonus, falls Rückfragen verboten sind.
+
+Kleines Extra-Feld für den Installationsprompt mit passendem Bonus:
+
+```text
+BONUS_TICKET_SUBREPO_REPO=<GIT-REPO-LINK-FUER-TICKETS>
+BONUS_TICKET_SUBREPO_MODE=loose-subrepo
+
+Wenn `BONUS_TICKET_SUBREPO_REPO` gesetzt ist, nutze diesen Link nur für `.project-work/tickets/` und binde den Ticket-Bereich nach der Ordnerstruktur-Initialisierung als Ticket-Subrepo an.
+Ziel: Die Tickets sollen separat versioniert unter `.project-work/tickets/` liegen.
+Nutze standardmäßig ein loses eingebettetes Git-Repository/Subrepo mit eigenem innerem `.git/`.
+Registriere es nur dann als echtes Git-Submodule mit `.gitmodules` und Gitlink, wenn ich `BONUS_TICKET_SUBREPO_MODE=submodule` angebe oder diese Option in einer Rückfrage ausdrücklich bestätige.
+Überschreibe, verschiebe oder lösche vorhandene Tickets nicht ungefragt.
+Führe keinen Commit und keinen Push aus.
+```
+
+Wenn dieser Bonus nicht gewünscht ist, lasse das Extra-Feld weg oder ignoriere den Init-Punkt ausdrücklich:
+
+```text
+ignore: Ticket-Repo als Subrepo anbinden
+```
+
 ### Rückfragen bei der Initialisierung
 
 `Init.md` darf bei Beispielinhalten Rückfragen stellen. Das ist beabsichtigt, weil Beispielstory und Beispielticket projektbezogene Namen, Ziele und Ticketorte haben können.

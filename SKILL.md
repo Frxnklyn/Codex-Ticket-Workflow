@@ -20,8 +20,11 @@ Verwenden, wenn der Nutzer z. B. sagt:
 - Story und Ticket sind strukturell ähnlich (Markdown + YAML-Frontmatter).
 - Story = übergeordneter Arbeitscontainer.
 - Ticket = einzelne konkret umsetzbare Aufgabe.
-- Tickets dürfen innerhalb einer Story oder story-los unter `.project-work/tickets/` liegen.
+- Tickets liegen zentral unter `.project-work/tickets/`.
+- Story-Zugehörigkeit wird über das Frontmatter-Feld `story: story-XXX` und die Ticketübersicht der Story beschrieben.
+- `.project-work/tickets/` ist auch der feste Zielpfad, wenn Tickets als eigenes Repository/Subrepo angebunden werden.
 - Story gilt erst als abgeschlossen, wenn relevante Tickets `done` oder `discarded` sind.
+- Storys oder Tickets zu schreiben ist Planungsarbeit. Dabei niemals direkt mit der fachlichen Umsetzung beginnen.
 
 ## Verbindliche Statuswerte
 
@@ -51,11 +54,11 @@ Bearbeitungsregel:
 
 `RULE.md` ist optional und kann auf mehreren Ebenen liegen.
 
-Beim Bearbeiten eines Story-Tickets gilt (allgemein -> spezifisch):
+Beim Bearbeiten eines Story-bezogenen Tickets gilt (allgemein -> spezifisch):
 1. `.project-work/RULE.md`
 2. `.project-work/storys/RULE.md`
 3. `.project-work/storys/<story>/RULE.md`
-4. `.project-work/storys/<story>/tickets/RULE.md`
+4. `.project-work/tickets/RULE.md`
 
 Beim Bearbeiten eines story-losen Tickets gilt:
 1. `.project-work/RULE.md`
@@ -65,14 +68,21 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Arbeitsablauf Ticket-Bearbeitung
 
-1. Bei Story-Tickets Story öffnen; bei story-losen Tickets direkt das Ticket öffnen.
+1. Bei Story-bezogenen Tickets Story öffnen; bei story-losen Tickets direkt das Ticket öffnen.
 2. Relevante `RULE.md` lesen.
 3. `tools` aus Story und Ticket prüfen.
 4. Ticket (Aufgabe/Anforderungen/Nicht-Ziele/AC) lesen.
 5. Nur Ticket-Scope bearbeiten.
 6. Ticket aktualisieren (`status`, `updated`, AC, Arbeitsnotizen).
-7. Bei Story-Tickets `STATUS.md` aktualisieren.
-8. Bei Story-Tickets Ticketübersicht in `STORY.story.md` aktualisieren; bei story-losen Tickets entfallen Story-Dateien.
+7. Bei Story-bezogenen Tickets `STATUS.md` aktualisieren.
+8. Bei Story-bezogenen Tickets Ticketübersicht in `STORY.story.md` aktualisieren; bei story-losen Tickets entfallen Story-Dateien.
+
+## Storys und Tickets schreiben
+
+- Beim Anlegen oder Ausformulieren von Storys und Tickets nur die Workflow-Artefakte schreiben.
+- Keine fachliche Umsetzung starten: keinen Produktivcode ändern, keine Build-/Config-Anpassungen vornehmen, keine Ticket-Aufgabe bereits miterledigen.
+- Neue Tickets initial mit `status: backlog` oder `status: ready` anlegen, nicht mit `in_progress` oder `done`.
+- Erst mit der Umsetzung beginnen, wenn der Nutzer ausdrücklich ein Ticket oder eine Story zur Bearbeitung freigibt.
 
 ## Story anlegen
 
@@ -82,7 +92,9 @@ Spezifischere Regeln ergänzen/überschreiben allgemeinere Regeln.
 
 ## Ticket anlegen
 
-- Speicherort: `<story>/tickets/` oder `.project-work/tickets/` für story-lose Tickets.
+- Speicherort: immer `.project-work/tickets/`.
+- Für Story-Tickets `story: story-XXX` setzen und die Story-Ticketübersicht aktualisieren.
+- Für story-lose Tickets `story: none` setzen; Story-Dateien entfallen.
 - Name: `001-kurzer-ticket-name.ticket.md`
 - Nach Anlage eines Story-Tickets Story-Ticketübersicht sofort aktualisieren; bei story-losen Tickets entfällt dieser Schritt.
 

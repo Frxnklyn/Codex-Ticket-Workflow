@@ -7,9 +7,10 @@ Diese Datei ist die zentrale Referenz für die Ordner- und Dateistruktur des `ti
 ```txt
 .project-work/
   RULE.md                         # optional, globale Projektarbeitsregeln
-  tickets/                         # optionale story-lose Tickets
-    RULE.md                       # optional, Regeln für story-lose Tickets
-    001-standalone-ticket.ticket.md
+  tickets/                         # zentrale Ticketablage; optional eigenes Ticket-Repo/Subrepo
+    RULE.md                       # optional, Regeln für alle Tickets
+    001-story-ticket.ticket.md
+    002-standalone-ticket.ticket.md
   storys/
     RULE.md                       # optional, Regeln für aktive Storys
     story-001-short-name/
@@ -17,18 +18,12 @@ Diese Datei ist die zentrale Referenz für die Ordner- und Dateistruktur des `ti
       STATUS.md
       NOTES.md
       RULE.md                     # optional, Story-spezifische Regeln
-      tickets/
-        RULE.md                   # optional, Ticket-spezifische Regeln für diese Story
-        001-short-ticket-name.ticket.md
-        002-another-ticket.ticket.md
   archive/
     2026/
       story-000-finished-example/
         STORY.story.md
         STATUS.md
         NOTES.md
-        tickets/
-          001-finished-ticket.ticket.md
 ```
 
 ## Minimalstruktur nach Installation
@@ -44,9 +39,13 @@ Bei der einmaligen Initialisierung müssen zunächst nur diese Ordner existieren
 
 `RULE.md`, Story-Ordner, konkrete Ticketdateien und Archiv-Jahresordner werden erst angelegt, wenn sie fachlich benötigt werden.
 
-## Story-lose Tickets
+## Zentrale Ticketablage
 
-Tickets dürfen auch außerhalb von Storys unter `.project-work/tickets/` existieren. Dieser Ort ist für kleine, unabhängige Aufgaben gedacht, die keine eigene Story benötigen. Story-lose Tickets verwenden dasselbe Ticket-Template; das Frontmatter-Feld `story` kann leer bleiben oder auf `none` gesetzt werden.
+Alle Ticketdateien liegen unter `.project-work/tickets/`. Der Ordnername `tickets` bleibt auch dann unverändert, wenn dieser Bereich als eigenes Git-Repository, loses Subrepo oder echtes Submodule angebunden wird.
+
+Story-bezogene Tickets setzen im Frontmatter `story: story-XXX` und werden in der Ticketübersicht der jeweiligen `STORY.story.md` verlinkt. Story-lose Tickets verwenden dasselbe Ticket-Template; das Frontmatter-Feld `story` wird auf `none` gesetzt.
+
+Beim Schreiben oder Planen von Storys und Tickets wird nur die Workflow-Struktur gepflegt. Die fachliche Umsetzung der Tickets beginnt erst nach ausdrücklicher Nutzerfreigabe.
 
 ## Verweise
 

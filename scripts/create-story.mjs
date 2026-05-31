@@ -9,7 +9,7 @@ const slug = slugify(title);
 const dir = path.join(baseDir, `${id}-${slug}`);
 const today = new Date().toISOString().slice(0, 10);
 
-await fs.mkdir(path.join(dir, 'tickets'), { recursive: true });
+await fs.mkdir(dir, { recursive: true });
 
 const story = `---
 type: story

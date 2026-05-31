@@ -64,7 +64,7 @@ Wenn ein Tool für strukturierte Nutzereingaben verfügbar ist, nutze dieses Too
 
 - Erkläre, dass Codex gerade den Initialisierungspunkt `Beispielstory anlegen` ausführt.
 - Erkläre, dass die Beispielstory eine klar markierte Start-/Demostory im aktiven Story-Ort erzeugen würde.
-- Nenne die voraussichtlich betroffenen Dateien/Ordner, insbesondere den neuen Story-Ordner, `STORY.story.md`, `STATUS.md`, `NOTES.md` und den leeren `tickets/`-Ordner.
+- Nenne die voraussichtlich betroffenen Dateien/Ordner, insbesondere den neuen Story-Ordner, `STORY.story.md`, `STATUS.md`, `NOTES.md` und bei späteren Tickets den zentralen Ordner `.project-work/tickets/`.
 - Erkläre die Optionen und Folgen:
   - Ja, mit Standardwerten: Codex legt die Beispielstory mit abgeleitetem Projektnamen, nächster freier Story-ID und Standard-Story-Namen an.
   - Nein, überspringen: Codex legt keine Beispielstory an und dokumentiert den Punkt als übersprungen.
@@ -89,7 +89,7 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erkl�
 - Lege eine Beispielstory unter dem in `references/target-structure.md` beschriebenen aktiven Story-Ort an.
 - Nutze `templates/STORY.story.md`, `templates/STATUS.md` und `templates/NOTES.md` als Grundlage.
 - Markiere die Story in Titel, Ziel oder Hinweistext eindeutig als Beispiel/Startpunkt, damit Menschen sie später anpassen oder löschen können.
-- Erzeuge den leeren `tickets/`-Ordner innerhalb der Story.
+- Erzeuge keinen `tickets/`-Ordner innerhalb der Story. Tickets liegen zentral unter `.project-work/tickets/`.
 - Überschreibe keine vorhandene Story.
 
 **Ergebnis:**
@@ -101,7 +101,7 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erkl�
 
 **Kurzname:** `BeispielTicket anlegen`
 
-**Ziel:** Ein erstes Beispiel-Ticket zeigt, wie eine kleine konkrete Aufgabe formuliert wird. Es darf innerhalb einer Beispielstory oder als story-loses Ticket unter `.project-work/tickets/` angelegt werden.
+**Ziel:** Ein erstes Beispiel-Ticket zeigt, wie eine kleine konkrete Aufgabe formuliert wird. Es wird immer unter `.project-work/tickets/` angelegt und kann über `story: story-XXX` einer Beispielstory zugeordnet oder mit `story: none` story-los bleiben.
 
 **Voraussetzung:** Punkt 1 ist erledigt oder war bereits vorhanden. Wenn das Ticket in einer Beispielstory liegen soll, muss Punkt 2 erledigt, bereits vorhanden oder ausdrücklich gewünscht sein.
 
@@ -110,22 +110,23 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erkl�
 - Frage vor dem Anlegen per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ob ein Beispielticket erstellt werden soll.
 - Formuliere die Frage ausführlich: erkläre, dass Codex gerade den Initialisierungspunkt `BeispielTicket anlegen` ausführt, dass das Ticket eine kleine Beispielaufgabe zur Prüfung/Dokumentation der `.project-work/`-Struktur erzeugen würde und welche Datei voraussichtlich neu angelegt wird.
 - Erkläre bei der Ja/Nein-Entscheidung die Folgen: Bei Zustimmung legt Codex ein Beispiel-Ticket an; bei Ablehnung wird kein Ticket erzeugt und der Punkt als übersprungen dokumentiert.
-- Frage den gewünschten Ablageort per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ab: im `tickets/`-Ordner der Beispielstory oder als story-loses Ticket unter `.project-work/tickets/`.
-- Erkläre bei der Ablageort-Frage ausführlich, was die Optionen bedeuten: innerhalb der Beispielstory wird zusätzlich die Ticketübersicht der Story aktualisiert; als story-loses Ticket bleibt das Ticket unabhängig unter `.project-work/tickets/`.
+- Frage den gewünschten Zusammenhang per strukturierter Nutzereingabe (Codex-Popup), sofern verfügbar, ab: der Beispielstory zugeordnet oder story-los.
+- Erkläre bei der Zusammenhang-Frage ausführlich, was die Optionen bedeuten: bei Zuordnung zur Beispielstory wird zusätzlich die Ticketübersicht der Story aktualisiert; als story-loses Ticket bleibt das Ticket unabhängig, liegt aber ebenfalls unter `.project-work/tickets/`.
 - Stelle diese Fragen nur als normale Chat-Rückfragen, wenn kein Tool für strukturierte Nutzereingaben verfügbar ist, und übernimm dann dieselben Erklärungen in die Chat-Frage.
-- Wenn Rückfragen verboten sind und der Prompt keinen Ablageort vorgibt, überspringe diesen Punkt statt Annahmen zu erfinden.
-- Lege das Ticket am bestätigten Ablageort an.
-- Verwende die nächste freie Ticketnummer am gewählten Ablageort, normalerweise `001`.
+- Wenn Rückfragen verboten sind und der Prompt keinen Zusammenhang vorgibt, überspringe diesen Punkt statt Annahmen zu erfinden.
+- Lege das Ticket unter `.project-work/tickets/` an.
+- Verwende die nächste freie Ticketnummer unter `.project-work/tickets/`, normalerweise `001`.
 - Verwende einen projektbezogenen Namen wie `001-workflow-struktur-pruefen.ticket.md`.
 - Nutze `templates/TICKET.ticket.md` als Grundlage.
 - Formuliere Aufgabe, Kontext, Anforderungen und Akzeptanzkriterien passend zum Zielprojekt: Das Ticket soll die angelegte `.project-work/`-Struktur prüfen und bei Bedarf dokumentieren.
-- Aktualisiere die Ticketübersicht in `STORY.story.md` der Beispielstory nur, wenn das Ticket innerhalb dieser Story angelegt wurde.
+- Aktualisiere die Ticketübersicht in `STORY.story.md` der Beispielstory nur, wenn das Ticket dieser Story zugeordnet wurde.
+- Beginne nach dem Anlegen des Beispiel-Tickets nicht mit dessen Umsetzung.
 - Überschreibe kein vorhandenes Ticket.
 
 **Ergebnis:**
 
 - Ein projektbezogenes Beispiel-Ticket existiert oder wurde bewusst ignoriert/übersprungen.
-- Die Beispielstory referenziert das Ticket nur, wenn es tatsächlich innerhalb dieser Story angelegt wurde.
+- Die Beispielstory referenziert das Ticket nur, wenn es tatsächlich dieser Story zugeordnet wurde.
 
 ### 4. Bonus: Ticket-Repo als Subrepo anbinden
 

@@ -11,14 +11,10 @@ if (storyIndex !== -1) {
 const title = args.join(' ').trim();
 if (!title) { console.error('Usage: node create-ticket.mjs [--story story-001-name] "Ticket title"'); process.exit(1); }
 
-let dir;
+let dir = path.join(ROOT, '.project-work', 'tickets');
 let story = 'none';
 if (storySlug) {
-  const storyDir = path.join(ROOT, '.project-work', 'storys', storySlug);
-  dir = path.join(storyDir, 'tickets');
   story = storySlug.match(/^(story-\d+)/)?.[1] || storySlug;
-} else {
-  dir = path.join(ROOT, '.project-work', 'tickets');
 }
 
 await fs.mkdir(dir, { recursive: true });

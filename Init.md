@@ -127,6 +127,52 @@ Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erkl�
 - Ein projektbezogenes Beispiel-Ticket existiert oder wurde bewusst ignoriert/übersprungen.
 - Die Beispielstory referenziert das Ticket nur, wenn es tatsächlich innerhalb dieser Story angelegt wurde.
 
+### 4. Bonus: Ticket-Repo als Subrepo anbinden
+
+**Kurzname:** `Ticket-Repo als Subrepo anbinden`
+
+**Ziel:** Wenn der Installations- oder Re-Initialisierungsprompt ausdrücklich einen Repository-Link für Tickets enthält, wird der Ticket-Bereich als separat versioniertes eingebettetes Repository/Subrepo vorbereitet. Dadurch können Tickets unabhängig vom Hauptprojekt versioniert, geteilt oder später bewusst als Submodule registriert werden.
+
+**Voraussetzung:** Punkt 1 ist erledigt oder war bereits vorhanden. Der Prompt enthält einen eindeutigen Git-Repository-Link für das Ticket-Repo und benennt erkennbar, dass dieser Link für Tickets bzw. den Ticket-Bereich gedacht ist.
+
+**Erkennung im Prompt:**
+
+- Suche nach einem Git-Repository-Link, z. B. `https://...git`, `git@...:owner/repo.git` oder einem vergleichbaren Git-Remote.
+- Nutze den Link für diesen Bonus nur, wenn der Prompt ihn ausdrücklich als Ticket-Repo, Ticket-Subrepo, `.project-work/tickets/`-Repo oder ähnlich beschreibt.
+- Wenn mehrere Repository-Links vorkommen oder der Zweck des Links nicht eindeutig ist, frage strukturiert nach oder blockiere diesen Bonus, falls Rückfragen verboten sind.
+- Verwende niemals automatisch den Link des `ticket-workflow` Skills selbst als Ticket-Repo.
+
+**Interaktive Abfrage:**
+
+Wenn ein Tool für strukturierte Nutzereingaben verfügbar ist, nutze dieses Tool, um vor dem Anlegen/Anbinden als Codex-Popup ausführlich zu fragen:
+
+- Erkläre, dass Codex gerade den Bonus `Ticket-Repo als Subrepo anbinden` ausführt.
+- Erkläre, dass der im Prompt gefundene Ticket-Repository-Link genutzt werden kann, um `.project-work/tickets/` als eigenes eingebettetes Git-Repository/Subrepo anzulegen.
+- Nenne die voraussichtlich betroffenen Dateien/Ordner, insbesondere `.project-work/tickets/`, optional `.gitmodules` bei ausdrücklich gewünschtem Submodule-Modus und den Git-Status des Hauptprojekts.
+- Erkläre die Optionen und Folgen:
+  - Ja, als loses Subrepo: Codex klont oder verbindet das Ticket-Repo unter `.project-work/tickets/`, lässt dessen inneres `.git/` erhalten und nimmt die Ticket-Dateien nicht als normale Dateien in den Git-Index des Hauptprojekts auf.
+  - Ja, als echtes Submodule: Codex registriert das Ticket-Repo unter `.project-work/tickets/` als Git-Submodule, wodurch `.gitmodules` und ein Gitlink im Hauptrepo entstehen können. Diese Option darf nur genutzt werden, wenn der Prompt Submodule ausdrücklich erlaubt oder die Rückfrage bestätigt wird.
+  - Nein, überspringen: Codex legt kein Ticket-Subrepo an und dokumentiert den Bonus als übersprungen.
+- Frage danach: Soll der Ticket-Bereich aus dem gefundenen Repo-Link als Subrepo angebunden werden?
+
+Wenn kein solches Tool verfügbar ist, stelle dieselbe Frage mit derselben Erklärung als normale Chat-Rückfrage.
+
+**Aktion:**
+
+- Führe diesen Bonus nur aus, wenn ein eindeutiger Ticket-Repo-Link vorhanden ist und der Nutzer bzw. Prompt das Anbinden bestätigt.
+- Prüfe zuerst, ob `.project-work/tickets/` bereits ein Git-Repository oder Submodule ist. Wenn ja, prüfe Remote und HEAD und dokumentiere das Ergebnis, statt ungefragt neu zu klonen.
+- Wenn `.project-work/tickets/` existiert und Dateien enthält, überschreibe, verschiebe oder lösche nichts ungefragt. Frage nach, ob und wie zusammengeführt werden soll; wenn Rückfragen verboten sind, blockiere diesen Bonus.
+- Wenn `.project-work/tickets/` leer ist oder noch nicht existiert, lege das Ticket-Repo am Pfad `.project-work/tickets/` an.
+- Beim losen Subrepo bleibt der innere `.git/`-Ordner erhalten. Der Ordner wird nicht automatisch in `.gitignore`, `.git/info/exclude` oder andere Ignore-/Exclude-Dateien eingetragen; vorhandene projektbewusste Regeln bleiben erhalten, außer der Nutzer verlangt eine konkrete Änderung.
+- Beim echten Submodule-Modus dürfen `.gitmodules` und der Gitlink im Hauptrepo nur erstellt/aktualisiert werden, wenn diese Option ausdrücklich bestätigt wurde.
+- Führe keinen Commit und keinen Push aus.
+- Dokumentiere am Ende Remote, Pfad, Modus und ob Änderungen im Hauptrepo commit-ready sind.
+
+**Ergebnis:**
+
+- Der Ticket-Bereich ist als separates Ticket-Subrepo angebunden oder der Bonus wurde bewusst ignoriert, übersprungen oder blockiert.
+- Bereits vorhandene Tickets oder Projektdateien wurden nicht ungefragt überschrieben.
+
 ## Danach ignorieren
 
 Nach der Initialisierung ist `Init.md` für den normalen Story-/Ticket-Workflow irrelevant. Codex soll diese Datei bei späterer Story- oder Ticket-Bearbeitung nicht lesen, außer der Nutzer fordert ausdrücklich eine erneute Initialisierung oder Installation an.

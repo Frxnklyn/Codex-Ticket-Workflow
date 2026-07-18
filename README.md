@@ -187,6 +187,17 @@ Ignoriere `.agents/skills/ticket-workflow/Init.md` bei normaler Story- oder Tick
 - Wiederverwendbare Templates: `templates/`
 - Hilfsskripte: `scripts/`
 - Beispiel-Prompts: `examples/`
+- Lokale Agent-Verknüpfung: `assets/Ticket Monkey Agent Verknüpfung.url`
+
+## Ticket Monkey Agent
+
+Die Datei `assets/Ticket Monkey Agent Verknüpfung.url` öffnet per Doppelklick den ChatGPT-Agenten:
+
+```text
+https://chatgpt.com/g/g-6a5b37594a648191981307d18f951534-ticket-monkey
+```
+
+Die Verknüpfung enthält bewusst keinen lokalen `IconFile`-Pfad, damit keine benutzerspezifischen Windows-Pfade ins Repository gelangen. Das Icon liegt weiterhin unter `assets/Ticket Monkey Icon.ico` und kann lokal bei Bedarf manuell für die Verknüpfung gesetzt werden.
 
 ## Was dieses Regelwerk festlegt
 
@@ -260,5 +271,6 @@ Vorgehen:
 
 - Zuletzt aktualisiert: **2026-07-18**
 - Repository: https://github.com/Frxnklyn/Codex-Ticket-Workflow
+- Ticket Monkey Agent: https://chatgpt.com/g/g-6a5b37594a648191981307d18f951534-ticket-monkey
 - ChatGPT-System-Prompt: [`examples/chatgpt-system-prompt.md`](examples/chatgpt-system-prompt.md)
 - Zweck: Wiederverwendbares Codex-Regelwerk zum strukturierten Erstellen, Prüfen und Pflegen von Storys und Tickets.

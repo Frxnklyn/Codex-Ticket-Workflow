@@ -255,3 +255,10 @@ Vorgehen:
 6. Führe keinen Commit und keinen Push aus.
 7. Prüfe danach `git status` im Hauptprojekt und fasse zusammen, welche Dateien geändert wurden.
 ```
+
+## Projektstand
+
+- Zuletzt aktualisiert: **2026-07-18**
+- Repository: https://github.com/Frxnklyn/Codex-Ticket-Workflow
+- ChatGPT-System-Prompt: [`examples/chatgpt-system-prompt.md`](examples/chatgpt-system-prompt.md)
+- Zweck: Wiederverwendbares Codex-Regelwerk zum strukturierten Erstellen, Prüfen und Pflegen von Storys und Tickets.
